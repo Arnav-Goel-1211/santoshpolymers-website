@@ -182,7 +182,7 @@
                         </div>
                     </div>
                     <div class="cotactForm light_form">
-                        <form id="contactForm" class="row" method="POST" action="https://script.google.com/macros/s/AKfycbyNWGekS8FbERf1GJe4IR4_yi_DckJ_tD5aucQeRGc7Mnv1NUsfR15ZOrFKHuLc5Av6hg/exec">
+                        <form id="contactForm" class="row" method="POST" action="#">
                             <div class="col-xl-6 col-lg-6 col-md-6 ">
                                 <div class="iconInput ">
                                     <input class="required " type="text " name="name " id="name " placeholder="ENTER YOUR NAME HERE ">
@@ -301,14 +301,38 @@
             form.addEventListener("submit", function(e) {
                 e.preventDefault();
                 const fdata = new FormData(form);
-                const action = e.target.action;
-                fetch(action, {
-                        method: 'POST',
-                        body: fdata,
+                
+                // Handling the extra spaces in the input names from the HTML
+                const name = fdata.get('name ') || fdata.get('name') || '';
+                const email = fdata.get('email ') || fdata.get('email') || '';
+                const phone = fdata.get('phone ') || fdata.get('phone') || '';
+                const company = fdata.get('company ') || fdata.get('company') || '';
+                const message = fdata.get('message ') || fdata.get('message') || '';
+
+                fetch('send_email.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        company: company,
+                        message: message
                     })
-                    .then(() => {
+                })
+                .then(response => {
+                    if (response.ok) {
                         alert("Success!");
-                    })
+                        form.reset();
+                    } else {
+                        alert("Failed to send message.");
+                    }
+                })
+                .catch(error => {
+                    alert("Error: " + error);
+                });
             });
         });
     </script>
