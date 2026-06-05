@@ -1,20 +1,24 @@
 <?php
 header("Content-Type: application/json");
 
-$apiKey = 're_LBsn9Dh6_K4t5cMxcd4tEesXhZqaWu7mL';
+// Hardcoded Resend API Key for simple cPanel deployment
+$apiKey = "re_LBsn9Dh6_K4t5cMxcd4tEesXhZqaWu7mL";
 
-if (!$apiKey) {
-    http_response_code(500);
-    echo json_encode(["error" => "API key not found"]);
-    exit;
-}
-
+// Extract data from standard POST (bypasses JSON ModSecurity rules)
 $name = isset($_POST['name']) ? trim($_POST['name']) : '';
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
 $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
 $company = isset($_POST['company']) ? trim($_POST['company']) : '';
 $message = isset($_POST['message']) ? trim($_POST['message']) : '';
 
+// Basic validation
+if (empty($name) || empty($email) || empty($message)) {
+    http_response_code(400);
+    echo json_encode(["error" => "Name, email, and message are required."]);
+    exit;
+}
+
+// Build the HTML email
 $htmlContent = "<p><strong>Name:</strong> {$name}</p>
                 <p><strong>Email:</strong> {$email}</p>
                 <p><strong>Phone:</strong> {$phone}</p>
@@ -28,6 +32,7 @@ $resendData = [
     "html" => $htmlContent
 ];
 
+// Send via cURL to Resend API
 $ch = curl_init("https://api.resend.com/emails");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
@@ -39,8 +44,14 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
 
 $response = curl_exec($ch);
 $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$error = curl_error($ch);
 curl_close($ch);
 
-http_response_code($httpcode);
-echo $response;
+if ($error) {
+    http_response_code(500);
+    echo json_encode(["error" => "cURL Error: " . $error]);
+} else {
+    http_response_code($httpcode);
+    echo $response;
+}
 ?>

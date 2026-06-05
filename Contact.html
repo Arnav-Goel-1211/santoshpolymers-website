@@ -331,6 +331,7 @@
                     }
                 })
                 .catch(error => {
+                    console.error("Fetch Error:", error);
                     alert("Error: " + error);
                 });
             });
