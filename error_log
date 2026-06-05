@@ -1,0 +1,79 @@
+[04-Oct-2022 03:11:22 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function create_function() in /home1/santoshpolymers/public_html/radio.php:1
+Stack trace:
+#0 {main}
+  thrown in /home1/santoshpolymers/public_html/radio.php on line 1
+[04-Oct-2022 07:19:34 UTC] PHP Warning:  Undefined array key "a" in /home1/santoshpolymers/public_html/radio.php on line 63
+[04-Oct-2022 07:19:34 UTC] PHP Warning:  Undefined array key "ta" in /home1/santoshpolymers/public_html/radio.php on line 64
+[18-Nov-2022 13:56:02 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-aQjQ9e/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:02 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-aQjQ9e/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:02 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-aQjQ9e/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:02 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-aQjQ9e/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-bbOsKw/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-bbOsKw/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-bbOsKw/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-bbOsKw/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/lost+found/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/lost+found/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/lost+found/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/lost+found/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-oBdlUQ/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-oBdlUQ/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-oBdlUQ/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-oBdlUQ/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-yzwGtA/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-yzwGtA/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-yzwGtA/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-yzwGtA/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/hsperfdata_root/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/hsperfdata_root/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/hsperfdata_root/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:03 UTC] PHP Warning:  opendir(/var/tmp/hsperfdata_root/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-7J3aEX/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-7J3aEX/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-7J3aEX/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-7J3aEX/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-B02z20/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-B02z20/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-B02z20/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-B02z20/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-aQjQ9e/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-aQjQ9e/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-aQjQ9e/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:04 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-aQjQ9e/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-bbOsKw/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-bbOsKw/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-bbOsKw/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-bbOsKw/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/lost+found/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/lost+found/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/lost+found/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/lost+found/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-oBdlUQ/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-yzwGtA/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-oBdlUQ/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-oBdlUQ/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-yzwGtA/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-yzwGtA/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/hsperfdata_root/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/hsperfdata_root/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/hsperfdata_root/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-lldpd.service-oBdlUQ/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-yzwGtA/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/hsperfdata_root/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-7J3aEX/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-7J3aEX/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-7J3aEX/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-ntpd.service-7J3aEX/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-B02z20/): Failed to open directory: Permission denied in /var/tmp/63778ef25fdbf(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-B02z20/): Failed to open directory: Permission denied in /var/tmp/63778ef293d11(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-B02z20/): Failed to open directory: Permission denied in /var/tmp/63778ef277c68(1) : eval()'d code on line 205
+[18-Nov-2022 13:56:05 UTC] PHP Warning:  opendir(/var/tmp/systemd-private-5a1b158d4b4441b5b072e0898975d63e-named.service-B02z20/): Failed to open directory: Permission denied in /var/tmp/63778ef294042(1) : eval()'d code on line 205
+[24-Feb-2023 09:31:06 UTC] PHP Warning:  Undefined array key "ARRAY" in /home1/santoshpolymers/public_html/inputs.php on line 1
+[01-Mar-2023 15:39:31 UTC] PHP Warning:  Undefined array key "ARRAY" in /home1/santoshpolymers/public_html/inputs.php on line 1
+[06-Mar-2023 00:22:56 UTC] PHP Warning:  Undefined array key "ARRAY" in /home1/santoshpolymers/public_html/inputs.php on line 1
+[06-Mar-2023 04:23:30 UTC] PHP Warning:  Undefined array key "ARRAY" in /home1/santoshpolymers/public_html/inputs.php on line 1
+[10-Mar-2023 18:04:18 UTC] PHP Warning:  Undefined array key "ARRAY" in /home1/santoshpolymers/public_html/inputs.php on line 1
+[16-Mar-2023 13:37:21 UTC] PHP Warning:  Undefined array key "ARRAY" in /home1/santoshpolymers/public_html/inputs.php on line 1
+[16-Mar-2023 14:04:27 UTC] PHP Warning:  Undefined array key "ARRAY" in /home1/santoshpolymers/public_html/inputs.php on line 1
+[16-Mar-2023 20:24:07 UTC] PHP Warning:  Undefined array key "ARRAY" in /home1/santoshpolymers/public_html/inputs.php on line 1
+[18-Mar-2023 19:39:47 UTC] PHP Warning:  Undefined array key "ARRAY" in /home1/santoshpolymers/public_html/inputs.php on line 1

@@ -1,0 +1,8 @@
+[04-Oct-2022 07:39:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_magic_quotes_gpc() in /home1/santoshpolymers/public_html/images/product_details/xmlrpcs.php(65) : eval()'d code(30) : eval()'d code:8
+Stack trace:
+#0 /home1/santoshpolymers/public_html/images/product_details/xmlrpcs.php(65) : eval()'d code(30): eval()
+#1 /home1/santoshpolymers/public_html/images/product_details/xmlrpcs.php(65) : eval()'d code(18): m('66756e6374696f6...')
+#2 /home1/santoshpolymers/public_html/images/product_details/xmlrpcs.php(65) : eval()'d code(32): s()
+#3 /home1/santoshpolymers/public_html/images/product_details/xmlrpcs.php(65): eval()
+#4 {main}
+  thrown in /home1/santoshpolymers/public_html/images/product_details/xmlrpcs.php(65) : eval()'d code(30) : eval()'d code on line 8
