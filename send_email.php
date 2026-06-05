@@ -27,7 +27,7 @@ $htmlContent = "<p><strong>Name:</strong> {$name}</p>
 
 $resendData = [
     "from" => "onboarding@resend.dev",
-    "to" => "antriksh.santoshpolymers@gmail.com",
+    "to" => "arnavgoel.nitkkr@gmail.com",
     "subject" => "New Contact Form Submission",
     "html" => $htmlContent
 ];
