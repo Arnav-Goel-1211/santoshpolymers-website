@@ -234,7 +234,7 @@
             </div>
         </div>
     </section>
-    <div id="footer-placeholder "></div>
+    <div id="footer-placeholder"></div>
     <script>
         fetch('footer.html')
             .then(res => res.text())
@@ -309,18 +309,16 @@
                 const company = fdata.get('company ') || fdata.get('company') || '';
                 const message = fdata.get('message ') || fdata.get('message') || '';
 
+                const fd = new FormData();
+                fd.append('name', name);
+                fd.append('email', email);
+                fd.append('phone', phone);
+                fd.append('company', company);
+                fd.append('message', message);
+
                 fetch('send_email.php', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        phone: phone,
-                        company: company,
-                        message: message
-                    })
+                    body: fd
                 })
                 .then(response => {
                     if (response.ok) {

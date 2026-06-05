@@ -28,21 +28,11 @@ if (!$apiKey) {
     exit;
 }
 
-// Get the posted data
-$inputJSON = file_get_contents('php://input');
-$input = json_decode($inputJSON, TRUE);
-
-if (!$input) {
-    http_response_code(400);
-    echo json_encode(["error" => "Invalid input data"]);
-    exit;
-}
-
-$name = isset($input['name']) ? $input['name'] : '';
-$email = isset($input['email']) ? $input['email'] : '';
-$phone = isset($input['phone']) ? $input['phone'] : '';
-$company = isset($input['company']) ? $input['company'] : '';
-$message = isset($input['message']) ? $input['message'] : '';
+$name = isset($_POST['name']) ? trim($_POST['name']) : '';
+$email = isset($_POST['email']) ? trim($_POST['email']) : '';
+$phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+$company = isset($_POST['company']) ? trim($_POST['company']) : '';
+$message = isset($_POST['message']) ? trim($_POST['message']) : '';
 
 $htmlContent = "<p><strong>Name:</strong> {$name}</p>
                 <p><strong>Email:</strong> {$email}</p>
