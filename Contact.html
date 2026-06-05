@@ -320,12 +320,14 @@
                     method: 'POST',
                     body: fd
                 })
-                .then(response => {
+                .then(async response => {
                     if (response.ok) {
                         alert("Success!");
                         form.reset();
                     } else {
-                        alert("Failed to send message.");
+                        const errorText = await response.text();
+                        console.error("Server Error:", errorText);
+                        alert("Failed to send message. Server said: " + errorText);
                     }
                 })
                 .catch(error => {
