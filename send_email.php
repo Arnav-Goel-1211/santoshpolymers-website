@@ -18,12 +18,29 @@ if (empty($name) || empty($email) || empty($message)) {
     exit;
 }
 
+// Basic referer check to reduce spam bots
+if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'santoshpolymers') === false) {
+    // We check for 'santoshpolymers' in referer. If it's a local test, it might fail, but for prod it's better.
+    // For safety, allow localhost as well.
+    if (!isset($_SERVER['HTTP_REFERER']) || (strpos($_SERVER['HTTP_REFERER'], 'santoshpolymers') === false && strpos($_SERVER['HTTP_REFERER'], 'localhost') === false && strpos($_SERVER['HTTP_REFERER'], '127.0.0.1') === false)) {
+        http_response_code(403);
+        echo json_encode(["error" => "Forbidden request source."]);
+        exit;
+    }
+}
+
+$safeName = htmlspecialchars($name);
+$safeEmail = htmlspecialchars($email);
+$safePhone = htmlspecialchars($phone);
+$safeCompany = htmlspecialchars($company);
+$safeMessage = nl2br(htmlspecialchars($message));
+
 // Build the HTML email
-$htmlContent = "<p><strong>Name:</strong> {$name}</p>
-                <p><strong>Email:</strong> {$email}</p>
-                <p><strong>Phone:</strong> {$phone}</p>
-                <p><strong>Company:</strong> {$company}</p>
-                <p><strong>Message:</strong><br>" . nl2br(htmlspecialchars($message)) . "</p>";
+$htmlContent = "<p><strong>Name:</strong> {$safeName}</p>
+                <p><strong>Email:</strong> {$safeEmail}</p>
+                <p><strong>Phone:</strong> {$safePhone}</p>
+                <p><strong>Company:</strong> {$safeCompany}</p>
+                <p><strong>Message:</strong><br>{$safeMessage}</p>";
 
 $resendData = [
     "from" => "onboarding@resend.dev",
