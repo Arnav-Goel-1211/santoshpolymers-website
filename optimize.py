@@ -6,7 +6,7 @@ import rjsmin
 def optimize_images(directory):
     for root, dirs, files in os.walk(directory):
         for file in files:
-            if file.lower().endswith(('.png', '.jpg', '.jpeg')):
+            if file.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
                 filepath = os.path.join(root, file)
                 try:
                     # Get original size
@@ -24,6 +24,8 @@ def optimize_images(directory):
                         img.save(filepath, "JPEG", optimize=True, quality=80)
                     elif file.lower().endswith('.png'):
                         img.save(filepath, "PNG", optimize=True)
+                    elif file.lower().endswith('.webp'):
+                        img.save(filepath, "WEBP", quality=80)
                         
                     new_size = os.path.getsize(filepath)
                     if new_size < orig_size:
