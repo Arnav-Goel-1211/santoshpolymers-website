@@ -1,0 +1,9 @@
+{
+  "name": "santoshpolymers-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Santosh Polymers - Oleochemicals & Packaging Manufacturer Website",
+  "scripts": {
+    "build": "python generate_products.py"
+  }
+}

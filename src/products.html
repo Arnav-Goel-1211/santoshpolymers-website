@@ -1,0 +1,88 @@
+<!-- Page Banner -->
+<section class="page-banner">
+  <div class="container">
+    <h1>Our Products</h1>
+    <div class="breadcrumbs">
+      <a href="index.html">Home</a>
+      <span>&rsaquo;</span>
+      <span>Products</span>
+    </div>
+  </div>
+</section>
+
+<!-- Product Catalog Filter tabs -->
+<section class="section">
+  <div class="container">
+    
+    <!-- Filter Buttons -->
+    <div class="product-filters">
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="oleo-chemicals">Oleo Chemicals</button>
+      <button class="filter-btn" data-filter="paper-chemicals">Paper Chemicals</button>
+      <button class="filter-btn" data-filter="herbal-extracts">Herbal Extracts</button>
+      <button class="filter-btn" data-filter="packaging-solutions">Packaging Solutions</button>
+    </div>
+    
+    <!-- Product Grid -->
+    <div class="grid grid-3" id="productsCatalogGrid">
+      {{products_grid_html}}
+    </div>
+    
+  </div>
+</section>
+
+<!-- Include script inline for filtering, since jquery shuffle is gone -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const productCards = document.querySelectorAll("#productsCatalogGrid .product-card");
+
+  function filterProducts(filterVal) {
+    productCards.forEach(card => {
+      const cardCat = card.getAttribute("data-category");
+      if (filterVal === "all" || cardCat === filterVal) {
+        card.style.display = "flex";
+        card.style.opacity = 0;
+        setTimeout(() => {
+          card.style.opacity = 1;
+          card.style.transition = "opacity 0.4s ease";
+        }, 50);
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+      // Toggle active class on buttons
+      filterBtns.forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+
+      const filterVal = this.getAttribute("data-filter");
+      filterProducts(filterVal);
+    });
+  });
+
+  // Handle initial filter based on URL hash
+  function applyHashFilter() {
+    const hash = window.location.hash;
+    if (hash) {
+      const filterVal = hash.substring(1); // remove '#'
+      const targetBtn = document.querySelector(`.filter-btn[data-filter="${filterVal}"]`);
+      if (targetBtn) {
+        // Toggle active class on buttons
+        filterBtns.forEach(b => b.classList.remove("active"));
+        targetBtn.classList.add("active");
+        filterProducts(filterVal);
+      }
+    }
+  }
+
+  // Run on load
+  applyHashFilter();
+
+  // Run when hash changes
+  window.addEventListener("hashchange", applyHashFilter);
+});
+</script>
