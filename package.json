@@ -4,6 +4,6 @@
   "private": true,
   "description": "Santosh Polymers - Oleochemicals & Packaging Manufacturer Website",
   "scripts": {
-    "build": "python generate_products.py"
+    "build": "echo 'Pre-generated static site — no build needed'"
   }
 }
