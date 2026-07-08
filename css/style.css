@@ -619,9 +619,8 @@ p { max-width: 70ch; }
 /* Cross-sell Band */
 .industry-cta-band {
   background: linear-gradient(135deg, var(--primary-color), #064d1a);
-  padding: 48px 0;
+  padding: 60px 0;
   text-align: center;
-  margin-top: 60px;
 }
 
 .industry-cta-band h2 {
@@ -884,7 +883,7 @@ p { max-width: 70ch; }
 }
 
 .nav-logo {
-  width: 176px;
+  width: 140px;
   height: auto;
   display: block;
   filter: brightness(0) invert(1);
