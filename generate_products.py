@@ -3,7 +3,7 @@ import json
 import urllib.parse
 import re
 
-base_dir = r"c:\Users\arnav\Desktop\santoshpolymers-website"
+base_dir = os.path.dirname(os.path.abspath(__file__))
 products_json_path = os.path.join(base_dir, "products_full.json")
 layout_path = os.path.join(base_dir, "templates", "layout.html")
 prod_detail_template_path = os.path.join(base_dir, "templates", "product_detail.html")
