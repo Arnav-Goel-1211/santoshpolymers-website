@@ -104,7 +104,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: "onboarding@resend.dev",
-        to: "santoshpolymers.info@gmail.com",
+        to: "arnavgoel.nitkkr@gmail.com",
         subject,
         html: htmlContent,
       }),
