@@ -1,0 +1,31 @@
+# Industries We Serve — Restructuring Plan
+
+## Changes to implement
+
+### 1. Hero + industry-picker strip
+- Replace sidebar anchor-nav with a full-width hero band: "Trusted Across 6+ Core Industries"
+- Horizontal scroll-snap industry pills (not text links) below the headline
+- Kills the clunky sidebar nav
+
+### 2. Alternating full-bleed image/content blocks
+- Odd rows: image left (60%) / content right (40%)
+- Even rows: image right / content left
+- Each block: industry name, positioning line (bigger type), description (tightened), and "Products we supply" tag row linking to product pages
+
+### 3. Stats/proof strip (blocker — needs real data)
+- Years in business, industries served, reach
+- Placeholder until user confirms stats
+
+### 4. "Other Industries" 2x2 tile grid
+- Break the catch-all into 4 mini-cards: Specialty Chemicals, Food Organics, Animal Feed, Cleaning
+
+### 5. Sticky CTA instead of sidebar contact box
+- Slide-in or sticky bottom-right contact card
+- Frees the sidebar entirely, content runs full-width
+
+### 6. Cross-sell footer band
+- "Don't see your industry? Talk to us" + WhatsApp/email CTA before global footer
+
+## Blockers
+- /images/services/*.webp are stock photos — need real facility/product photography for full-bleed layout
+- Stats/proof strip needs confirmed numbers from client

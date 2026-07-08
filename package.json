@@ -4,6 +4,7 @@
   "private": true,
   "description": "Santosh Polymers - Oleochemicals & Packaging Manufacturer Website",
   "scripts": {
+    "dev": "npx serve . -p 3000",
     "build": "echo 'Pre-generated static site — no build needed'"
   }
 }

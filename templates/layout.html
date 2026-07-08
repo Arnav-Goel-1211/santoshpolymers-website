@@ -26,16 +26,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{meta_description}}">
   <meta name="keywords" content="{{meta_keywords}}">
-  <meta name="author" content="Santosh Polymers">
+  <meta name="author" content="Santosh">
   
   <link rel="icon" type="image/png" href="images/favicon.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Santosh Polymers",
+    "name": "Santosh",
     "url": "https://santoshpolymers.com",
     "logo": "https://santoshpolymers.com/images/logo_3.webp",
     "contactPoint": {
@@ -61,34 +63,36 @@
   <nav class="nav-bar">
     <div class="container nav-bar-inner">
       <div class="logo">
-        <a href="index.html">
-          <img src="images/logo_3.webp" alt="Santosh Polymers Logo">
+        <a href="/">
+          <div class="logo-crop">
+            <img src="images/final logo svg.svg" alt="Santosh" class="nav-logo">
+          </div>
+          <span class="nav-tagline">We deliver our promises.</span>
         </a>
       </div>
       <ul class="main-menu">
-        <li class="{{active_home}}"><a href="index.html">Home</a></li>
+        <li class="{{active_home}}"><a href="/">Home</a></li>
         <li class="has-dropdown {{active_products}}">
-          <a href="products.htm">Products</a>
+          <a href="/products">Products</a>
           <ul class="dropdown-menu">
-            <li><a href="products.htm#oleo-chemicals">Oleo Chemicals</a></li>
-            <li><a href="products.htm#paper-chemicals">Paper Chemicals</a></li>
-            <li><a href="products.htm#herbal-extracts">Herbal Extracts</a></li>
-            <li><a href="products.htm#packaging-solutions">Packaging Solutions</a></li>
+            <li><a href="/products#oleo-chemicals">Oleo Chemicals</a></li>
+            <li><a href="/products#paper-chemicals">Paper Chemicals</a></li>
+            <li><a href="/products#herbal-extracts">Herbal Extracts</a></li>
+            <li><a href="/products#packaging-solutions">Packaging Solutions</a></li>
           </ul>
         </li>
-        <li class="{{active_about}}"><a href="about-us.htm">About Us</a></li>
-        <li class="{{active_industries}}"><a href="industries-we-serve.htm">Industries We Serve</a></li>
-        <li class="{{active_contact}}"><a href="contact-us.htm">Contact Us</a></li>
+        <li class="{{active_about}}"><a href="/about-us">About Us</a></li>
+        <li class="{{active_industries}}"><a href="/industries">Industries We Serve</a></li>
+        <li class="{{active_contact}}"><a href="/contact-us">Contact Us</a></li>
       </ul>
       
       <div class="nav-contacts">
-        <a href="mailto:santoshpolymers.info@gmail.com" class="nav-contact-item" title="Email Us">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span>santoshpolymers.info@gmail.com</span>
+        <a href="mailto:santoshpolymers.info@gmail.com" class="nav-contact-item" title="Email santoshpolymers.info@gmail.com">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span class="nav-contact-text">santoshpolymers.info@gmail.com</span>
         </a>
-        <a href="tel:+919215660695" class="nav-contact-item" title="Call Us">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <span>+91 92156 60695</span>
+        <a href="tel:+919215660695" class="nav-contact-item" title="Call +91 92156 60695">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
         </a>
       </div>
 
@@ -102,30 +106,35 @@
   <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
   <div class="mobile-menu-panel" id="mobileMenuPanel">
     <div class="mobile-menu-header">
-      <img src="images/logo.webp" alt="Santosh Polymers" style="height: 40px;">
+      <div class="mobile-logo-wrapper">
+        <div class="logo-crop mobile-logo-crop">
+          <img src="images/final logo svg.svg" alt="Santosh" class="mobile-logo">
+        </div>
+        <span class="mobile-tagline">We deliver our promises.</span>
+      </div>
       <button class="close-mobile-menu" id="closeMobileMenu" aria-label="Close Menu">&times;</button>
     </div>
     <div class="mobile-menu-links">
-      <a href="index.html">Home</a>
+      <a href="/">Home</a>
       <div>
         <span class="mobile-sub-toggle">
-          <a href="products.htm">Products</a>
+          <a href="/products">Products</a>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </span>
         <div class="sub-links">
-          <a href="products.htm#oleo-chemicals">Oleo Chemicals</a>
-          <a href="products.htm#paper-chemicals">Paper Chemicals</a>
-          <a href="products.htm#herbal-extracts">Herbal Extracts</a>
-          <a href="products.htm#packaging-solutions">Packaging Solutions</a>
+          <a href="/products#oleo-chemicals">Oleo Chemicals</a>
+          <a href="/products#paper-chemicals">Paper Chemicals</a>
+          <a href="/products#herbal-extracts">Herbal Extracts</a>
+          <a href="/products#packaging-solutions">Packaging Solutions</a>
         </div>
       </div>
-      <a href="about-us.htm">About Us</a>
-      <a href="industries-we-serve.htm">Industries We Serve</a>
-      <a href="contact-us.htm">Contact Us</a>
+      <a href="/about-us">About Us</a>
+      <a href="/industries">Industries We Serve</a>
+      <a href="/contact-us">Contact Us</a>
     </div>
     
     <div class="mobile-contact-info" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0, 0, 0, 0.08);">
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><a href="tel:+919215660695">+91 92156 60695</a></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><a href="tel:+919215660695">+91 92156 60695</a> | <a href="tel:+919254360695">+91 92543 60695</a></p>
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><a href="mailto:santoshpolymers.info@gmail.com">santoshpolymers.info@gmail.com</a></p>
     </div>
   </div>
@@ -139,7 +148,14 @@
   <footer>
     <div class="container footer-grid">
       <div class="footer-about">
-        <img src="images/logo_2.webp" alt="Santosh Polymers Logo">
+        <div style="margin-bottom: 20px;">
+          <a href="/">
+            <div class="logo-crop" style="justify-content: flex-start;">
+              <img src="images/final logo svg.svg" alt="Santosh" class="footer-logo">
+            </div>
+          </a>
+          <p class="footer-tagline">We deliver our promises.</p>
+        </div>
         <p>One of the leading producers of high-quality Oleochemicals, Distilled Fatty Acids, Paper Chemicals, Herbal Extracts, and Eco-friendly Packaging solutions in India. Dedicated to quality and service since 2012.</p>
         <div class="footer-social">
           <a href="mailto:santoshpolymers.info@gmail.com" aria-label="Email" title="Email Us">
@@ -159,11 +175,11 @@
       <div>
         <h3>Quick Links</h3>
         <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about-us.htm">About Us</a></li>
-          <li><a href="products.htm">Our Products</a></li>
-          <li><a href="industries-we-serve.htm">Industries We Serve</a></li>
-          <li><a href="contact-us.htm">Contact Us</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/products">Our Products</a></li>
+          <li><a href="/industries">Industries We Serve</a></li>
+          <li><a href="/contact-us">Contact Us</a></li>
         </ul>
       </div>
       <div>
@@ -172,21 +188,21 @@
           <div class="footer-prod-item">
             <div class="footer-prod-img"><img src="images/product/4.webp" alt="Oleic Fatty Acid" loading="lazy"></div>
             <div class="footer-prod-text">
-              <h5><a href="oleic-fatty-acid.htm">Oleic Fatty Acid</a></h5>
+              <h5><a href="/oleic-fatty-acid">Oleic Fatty Acid</a></h5>
               <span>Oleochemicals</span>
             </div>
           </div>
           <div class="footer-prod-item">
             <div class="footer-prod-img"><img src="images/product/18.webp" alt="AKD Wax Emulsion" loading="lazy"></div>
             <div class="footer-prod-text">
-              <h5><a href="akd-wax-emulsion.htm">AKD Wax Emulsion</a></h5>
+              <h5><a href="/akd-wax-emulsion">AKD Wax Emulsion</a></h5>
               <span>Paper Chemicals</span>
             </div>
           </div>
           <div class="footer-prod-item">
             <div class="footer-prod-img"><img src="images/product/5.webp" alt="Liquid Soya Lecithin" loading="lazy"></div>
             <div class="footer-prod-text">
-              <h5><a href="liquid-soya-lecithin.htm">Liquid Soya Lecithin</a></h5>
+              <h5><a href="/liquid-soya-lecithin">Liquid Soya Lecithin</a></h5>
               <span>Oleochemicals</span>
             </div>
           </div>
@@ -198,19 +214,19 @@
           Vill. Gharaula, Ladwa Kurukshetra,<br> Haryana, India - 136132
         </p>
         <p style="font-size: 13px;">
-          <strong>Phone:</strong> +91 92156 60695<br>
+          <strong>Phone:</strong> +91 92156 60695 | +91 92543 60695<br>
           <strong>Email:</strong> santoshpolymers.info@gmail.com
         </p>
       </div>
     </div>
     <div class="container footer-bottom">
-      <div>&copy; 2026 Santosh Polymers. All Rights Reserved.</div>
+      <div>&copy; 2026 Santosh. All Rights Reserved.</div>
       <div>Developed &amp; Restructured with high-speed vanilla stack.</div>
     </div>
   </footer>
 
   <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/919215660695?text=Hi%20Santosh%20Polymers,%20I'm%20interested%20in%20your%20products." class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+  <a href="https://wa.me/919215660695?text=Hi%20Santosh,%20I'm%20interested%20in%20your%20products." class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
   </a>
 

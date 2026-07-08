@@ -1,0 +1,55 @@
+# ANTIGRAVITY PROMPT: About Us / Company Page Redesign
+# Resolved as of 2026-07-09
+
+## Founders & Leadership — CONFIRMED
+- "Family-led since 2012" — no individual names or photos
+- Do NOT build 4-card leadership grid. Replace with a single "family-led" statement line.
+- No headshots needed (confirmed: "we dont need images of founders")
+
+## Founding Narrative — CONFIRMED
+- **1997** — Founding of the corrugation/packaging unit (family's first business)
+- **2012** — Founding of Santosh Polymers (the oleochemicals & chemicals company)
+- Hero uses a single authoritative line: e.g. "Family-led since 2012" or "Est. 2012"
+- The 1997 origin can appear in the timeline (milestone #1), NOT in the hero
+- Do NOT display two dates in the hero
+
+## Page Structure
+
+### 1. Hero — Split Layout
+- Left: headline + "Family-led since 2012" founding statement
+- Right: full-bleed facility image (NEEDS REAL PHOTOGRAPHY — stock placeholder for now)
+- Single clean narrative, no dual-date confusion
+
+### 2. Visual Milestone Timeline
+- Horizontal (desktop) / vertical (mobile) with scroll-triggered reveals
+- 6 milestones:
+  - **1997** — Packaging Products Unit (corrugation business founded)
+  - **2002** — Expand from new site's 2002 entry
+  - **2009** — Expand from new site's 2009 entry
+  - **2012** — Santosh Polymers Founded (oleochemicals & chemicals)
+  - **2017** — Surfactants and Lubricants
+  - **2021** — Construction Solutions
+- Each node: year (large, bold), title, 1-line description
+
+### 3. Family-Led Statement (replaces leadership grid)
+- Single block: "A family-led enterprise since 2012, built on [value/philosophy]"
+- No individual names, no headshot placeholders
+
+### 4. Plant Footprint — Icon-Stat Treatment
+- 3 items: 24/7 Monitoring / Zero-Discharge Wastewater / Full PPE Compliance
+- Separate facility image (not a repeat of hero image)
+- Style consistent with Industries page stat components
+
+### 5. Closing Cross-sell Band
+- Full-width, matching Industries page pattern
+- Copy: "Want to see our process or product range?" + CTAs
+
+## Tech Stack
+- Next.js (App Router), TypeScript, Tailwind CSS
+- Framer Motion for timeline reveals
+- Lucide React icons
+- Next/Image with placeholder blur
+
+## Open Blockers
+- Real facility photography for hero + plant section (currently stock-style images)
+- 2002 and 2009 milestone content needs expansion from new site's entries

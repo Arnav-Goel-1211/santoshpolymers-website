@@ -81,6 +81,7 @@ for p in products:
     p_name = p["product_name"]
     category = p["category"]
     filename = p["link"].split('/')[-1] # e.g. akd-wax-emulsion.htm (matches live SEO exactly)
+    dir_name = filename.replace('.htm', '') # e.g. akd-wax-emulsion
     
     # Format images
     img_list = p["images"]
@@ -185,12 +186,13 @@ for p in products:
         active_menu="products"
     )
     
-    # Save the file (e.g. oleic-fatty-acid.htm)
-    # Ensure the file is saved directly into the base directory
-    output_path = os.path.join(base_dir, filename)
+    # Save as directory/index.html for clean URLs (e.g. /oleic-fatty-acid/)
+    output_dir = os.path.join(base_dir, dir_name)
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, "index.html")
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(final_html)
-    print(f"Generated product file: {filename}")
+    print(f"Generated product: {dir_name}/")
 
 # ==========================================
 # 2. BUILD PRODUCTS CATALOG PAGE (products.htm)
@@ -202,6 +204,8 @@ for p in products:
     p_name = p["product_name"]
     category = p["category"]
     filename = p["link"].split('/')[-1]
+    dir_name = filename.replace('.htm', '')
+    clean_url = f"/{dir_name}"
     cat_slug = get_cat_slug(category)
     img_list = p["images"]
     main_image = img_list[0] if img_list else "images/product/default.webp"
@@ -223,12 +227,12 @@ for p in products:
         <div class="product-info">
           <div>
             <span class="product-cat">{category}</span>
-            <h3 class="product-title"><a href="{filename}">{p_name}</a></h3>
+            <h3 class="product-title"><a href="{clean_url}">{p_name}</a></h3>
             <p class="product-desc">{clean_weblink_boilerplate(p["description"], p_name)}</p>
           </div>
           <div class="product-actions">
-            <a href="{filename}" class="btn btn-secondary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Details</a>
-            <a href="https://wa.me/919215660695?text=Hi%20Santosh%20Polymers,%20I'm%20interested%20in%20buying%20{urllib.parse.quote(p_name)}." target="_blank" class="btn btn-primary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Enquire</a>
+            <a href="{clean_url}" class="btn btn-secondary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Details</a>
+            <a href="https://wa.me/919215660695?text=Hi%20Santosh,%20I'm%20interested%20in%20buying%20{urllib.parse.quote(p_name)}." target="_blank" class="btn btn-primary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Enquire</a>
           </div>
         </div>
       </div>
@@ -251,10 +255,11 @@ products_html = render_page(
     active_menu="products"
 )
 
-# Save products.htm
-with open(os.path.join(base_dir, "products.htm"), 'w', encoding='utf-8') as f:
+# Save to products/index.html
+os.makedirs(os.path.join(base_dir, "products"), exist_ok=True)
+with open(os.path.join(base_dir, "products", "index.html"), 'w', encoding='utf-8') as f:
     f.write(products_html)
-print("Generated core page: products.htm")
+print("Generated core page: products/")
 
 # ==========================================
 # 3. BUILD OTHER CORE PAGES
@@ -262,7 +267,7 @@ print("Generated core page: products.htm")
 core_pages = [
     {
         "src": "index.html",
-        "dest": "index.html",
+        "dest": "",
         "title": "Santosh Polymers | Oleochemicals & Packaging Manufacturer India",
         "desc": "Leading manufacturer and supplier of Oleochemicals, Distilled Fatty Acids, Soya Lecithin, Paper Chemicals (AKD Emulsion, DSR), and eco-friendly Pulp Packaging Trays in Kurukshetra, Haryana.",
         "keywords": "oleic fatty acid, distilled palm fatty acid, liquid soya lecithin, corrugated boxes, pulp egg trays, haryana, india",
@@ -270,7 +275,7 @@ core_pages = [
     },
     {
         "src": "about-us.html",
-        "dest": "about-us.htm",
+        "dest": "about-us",
         "title": "About Us | Santosh Polymers Kurukshetra Haryana",
         "desc": "Discover Santosh Polymers' history since 1997, our team leaders, state-of-the-art chemical manufacturing infrastructure, and our commitment to sustainable packaging and high-purity oleochemicals.",
         "keywords": "about company, founders, history, values, kurukshetra, haryana",
@@ -278,7 +283,7 @@ core_pages = [
     },
     {
         "src": "industries-we-serve.html",
-        "dest": "industries-we-serve.htm",
+        "dest": "industries",
         "title": "Industries We Serve | Santosh Polymers",
         "desc": "We supply specialty chemicals, distilled fatty acids, and eco-friendly packaging boxes to the Paint, Biodiesel fuel, Pharmaceutical, Petrochemical, and Plastic & Resin industries.",
         "keywords": "paint industry, biodiesel, pharmaceutical, petrochemical, resins, packaging",
@@ -286,7 +291,7 @@ core_pages = [
     },
     {
         "src": "contact-us.html",
-        "dest": "contact-us.htm",
+        "dest": "contact-us",
         "title": "Contact Us | Santosh Polymers Ladwa Kurukshetra",
         "desc": "Contact Mr. Ankur Goel or our technical sales team for sample requests, chemical formulation assistance, or commercial wholesale pricing on oleochemicals and pulp packaging.",
         "keywords": "contact address, phone, email, google map, office location, ladwa",
@@ -309,9 +314,14 @@ for page in core_pages:
         active_menu=page["menu"]
     )
     
-    dest_path = os.path.join(base_dir, page["dest"])
+    if page["dest"] == "":
+        dest_path = os.path.join(base_dir, "index.html")
+    else:
+        dest_dir = os.path.join(base_dir, page["dest"])
+        os.makedirs(dest_dir, exist_ok=True)
+        dest_path = os.path.join(dest_dir, "index.html")
     with open(dest_path, 'w', encoding='utf-8') as f:
         f.write(final_html)
-    print(f"Generated core page: {page['dest']}")
+    print(f"Generated core page: {'/' if page['dest'] == '' else page['dest'] + '/'}")
 
 print("\n--- ALL PAGES GENERATED SUCCESSFULLY ---")
