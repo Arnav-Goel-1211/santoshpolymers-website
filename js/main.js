@@ -290,4 +290,44 @@ document.addEventListener("DOMContentLoaded", function() {
     return re.test(String(email).toLowerCase());
   }
 
+  // ======= COOKIE CONSENT PANEL =======
+  const cookieConsentPanel = document.getElementById('cookieConsentPanel');
+  const cookieBtnAccept = document.getElementById('cookieBtnAccept');
+  const cookieBtnReject = document.getElementById('cookieBtnReject');
+
+  if (cookieConsentPanel && cookieBtnAccept && cookieBtnReject) {
+    // Show panel if consent hasn't been set yet
+    if (!localStorage.getItem('cookie-consent')) {
+      setTimeout(() => {
+        cookieConsentPanel.classList.add('active');
+      }, 1000); // Small delay for better UX entry
+    }
+
+    cookieBtnAccept.addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'granted');
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
+      cookieConsentPanel.classList.remove('active');
+    });
+
+    cookieBtnReject.addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'denied');
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied',
+          'analytics_storage': 'denied'
+        });
+      }
+      cookieConsentPanel.classList.remove('active');
+    });
+  }
+
 });

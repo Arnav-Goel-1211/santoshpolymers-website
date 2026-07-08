@@ -2,12 +2,23 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHS7WCSSHB"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    
+    // Check localStorage for consent preference to set the default state early
+    var consentState = localStorage.getItem('cookie-consent') === 'granted' ? 'granted' : 'denied';
+    
+    gtag('consent', 'default', {
+      'ad_storage': consentState,
+      'ad_user_data': consentState,
+      'ad_personalization': consentState,
+      'analytics_storage': consentState
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHS7WCSSHB"></script>
+  <script>
     gtag('js', new Date());
-
     gtag('config', 'G-XHS7WCSSHB');
   </script>
   <meta charset="UTF-8">
@@ -464,6 +475,21 @@
   <button class="back-to-top" id="backToTop" aria-label="Back to Top">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
   </button>
+
+  <!-- Cookie Consent Panel -->
+  <div class="cookie-consent-panel" id="cookieConsentPanel">
+    <div class="cookie-consent-content">
+      <h4>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        Cookie Consent
+      </h4>
+      <p>We use cookies to enhance your browsing experience, serve personalized ads, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies in accordance with our privacy policy.</p>
+      <div class="cookie-consent-buttons">
+        <button class="cookie-btn-reject" id="cookieBtnReject">Necessary Only</button>
+        <button class="cookie-btn-accept" id="cookieBtnAccept">Accept All</button>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
