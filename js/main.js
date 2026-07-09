@@ -72,15 +72,16 @@ document.addEventListener("DOMContentLoaded", function() {
   // ==========================================
   // 3. PRODUCT TAB SWITCHING
   // ==========================================
-  const tabLinks = document.querySelectorAll(".tab-link");
-  const tabContents = document.querySelectorAll(".tab-content");
+  const tabLinks = document.querySelectorAll(".tab-link, .pdp-tab-btn");
+  const tabContainers = document.querySelectorAll(".tab-content, .pdp-tab-content");
 
-  if (tabLinks.length > 0 && tabContents.length > 0) {
+  if (tabLinks.length > 0 && tabContainers.length > 0) {
     tabLinks.forEach(link => {
       link.addEventListener("click", function() {
         const targetTab = this.getAttribute("data-tab");
-        tabLinks.forEach(l => l.classList.remove("active"));
-        tabContents.forEach(c => c.classList.remove("active"));
+        const parent = this.closest(".pdp-tabs-container") || document;
+        parent.querySelectorAll(".pdp-tab-btn, .tab-link").forEach(l => l.classList.remove("active"));
+        parent.querySelectorAll(".pdp-tab-content, .tab-content").forEach(c => c.classList.remove("active"));
         this.classList.add("active");
         const targetContent = document.getElementById(targetTab);
         if (targetContent) targetContent.classList.add("active");
