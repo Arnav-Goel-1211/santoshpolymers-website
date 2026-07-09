@@ -54,7 +54,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -63,7 +63,7 @@ body {
   background-color: var(--bg-primary);
   line-height: var(--leading-normal);
   font-size: var(--text-base);
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -417,10 +417,10 @@ p { max-width: 70ch; }
   align-items: center;
   gap: 8px;
   padding: 10px 22px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 30px;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: var(--text-sm);
   font-weight: 500;
   text-decoration: none;
@@ -428,9 +428,9 @@ p { max-width: 70ch; }
 }
 
 .industry-picker a:hover {
-  background: var(--secondary-color);
-  border-color: var(--secondary-color);
-  color: var(--text-primary);
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
@@ -849,11 +849,20 @@ p { max-width: 70ch; }
   position: sticky;
   top: 0;
   z-index: 99;
-  transition: var(--transition-smooth);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, height 0.25s ease;
 }
 
 .nav-bar.scrolled {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background-color: rgba(3, 82, 23, 0.98);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
+.nav-bar.scrolled .nav-bar-inner {
+  height: 66px;
+  transition: height 0.25s ease;
 }
 
 .nav-bar-inner {
@@ -861,6 +870,7 @@ p { max-width: 70ch; }
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: height 0.25s ease;
 }
 
 /* Nav logo - santosh.svg cropped to show only "Santosh" (top ~62% of SVG height) */
@@ -887,6 +897,11 @@ p { max-width: 70ch; }
   height: auto;
   display: block;
   filter: brightness(0) invert(1);
+  transition: width 0.25s ease;
+}
+
+.nav-bar.scrolled .nav-logo {
+  width: 120px;
 }
 
 .footer-logo {
@@ -912,6 +927,15 @@ p { max-width: 70ch; }
   line-height: 1.2;
   white-space: nowrap;
   margin-top: 1px;
+}
+
+/* Hero end sentinel - invisible marker for IntersectionObserver */
+.hero-end-sentinel {
+  height: 1px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
 }
 
 .mobile-tagline {
@@ -1229,7 +1253,7 @@ p { max-width: 70ch; }
 
 /* Page Banner */
 .page-banner {
-  background: linear-gradient(135deg, rgba(3, 82, 23, 0.95), rgba(45, 161, 73, 0.8)), url('../images/bg/2.webp');
+  background: linear-gradient(to right, rgba(3, 40, 15, 0.92) 0%, rgba(3, 40, 15, 0.78) 40%, rgba(3, 40, 15, 0.35) 100%), url('../images/bg/2.webp');
   background-size: cover;
   background-position: center;
   padding: 80px 0;
@@ -1683,7 +1707,7 @@ p { max-width: 70ch; }
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(15, 23, 42, 0.9) 30%, rgba(15, 23, 42, 0.4) 100%);
+  background: linear-gradient(to right, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.45) 50%, rgba(15, 23, 42, 0.15) 100%);
 }
 
 .hero-bg img {
@@ -4698,5 +4722,151 @@ footer p {
   .pdp-related-row {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+}
+
+/* Clickable Cards (Stretched Link Pattern) */
+.product-card,
+.featured-card,
+.related-product-card {
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-link-stretched::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+  cursor: pointer;
+}
+
+/* Ensure the cursor indicates select/click state for the whole card */
+.product-card:hover,
+.featured-card:hover,
+.related-product-card:hover {
+  cursor: pointer;
+}
+
+/* Unified Inner-Page Banner System */
+.unified-banner {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  padding: 70px 0 !important;
+  text-align: left !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 -10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.unified-banner .breadcrumbs {
+  margin-bottom: 14px;
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.unified-banner .breadcrumbs a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.unified-banner .breadcrumbs a:hover {
+  color: var(--secondary-color);
+}
+
+.unified-banner .breadcrumbs span {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 4px;
+}
+
+.banner-eyebrow {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 5px 14px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.unified-banner h1 {
+  font-size: 38px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 0 16px 0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.banner-description {
+  font-size: 16px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  max-width: 800px;
+  margin: 0 0 20px 0 !important;
+  line-height: 1.6 !important;
+  font-weight: 400;
+}
+
+.banner-stats-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 24px;
+  flex-wrap: wrap;
+}
+
+.banner-stat-box {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.banner-stat-box strong {
+  font-size: 18px;
+  color: var(--secondary-color);
+}
+
+/* Inner Banner Responsive Styles */
+@media (max-width: 768px) {
+  .unified-banner {
+    padding: 50px 0 !important;
+    text-align: center !important;
+  }
+  .unified-banner .breadcrumbs {
+    justify-content: center;
+  }
+  .unified-banner h1 {
+    font-size: 28px !important;
+  }
+  .banner-description {
+    font-size: 14px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .banner-stats-container {
+    justify-content: center;
+    gap: 16px;
+    margin-top: 18px;
+    padding-top: 18px;
+  }
+  .banner-stat-box {
+    font-size: 12px;
   }
 }

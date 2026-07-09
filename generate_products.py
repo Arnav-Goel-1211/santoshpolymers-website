@@ -20,6 +20,30 @@ with open(layout_path, 'r', encoding='utf-8') as f:
 with open(prod_detail_template_path, 'r', encoding='utf-8') as f:
     prod_detail_tpl = f.read()
 
+# Read inner banner template
+inner_banner_path = os.path.join(base_dir, "templates", "inner_banner.html")
+with open(inner_banner_path, 'r', encoding='utf-8') as f:
+    inner_banner_tpl = f.read()
+
+def render_banner(eyebrow, title, description, breadcrumbs, bg_image, stats_html=""):
+    crumbs_html = '<a href="/">Home</a>'
+    for label, url in breadcrumbs:
+        crumbs_html += ' <span>&rsaquo;</span> '
+        if url:
+            crumbs_html += f'<a href="{url}">{label}</a>'
+        else:
+            crumbs_html += f'<span>{label}</span>'
+            
+    html = inner_banner_tpl
+    html = html.replace("{{banner_eyebrow}}", eyebrow)
+    html = html.replace("{{banner_title}}", title)
+    html = html.replace("{{banner_description}}", description)
+    html = html.replace("{{banner_breadcrumbs}}", crumbs_html)
+    html = html.replace("{{banner_bg_image}}", bg_image)
+    html = html.replace("{{banner_stats_html}}", stats_html)
+    return html
+
+
 def clean_weblink_boilerplate(text, product_name):
     if not text:
         return product_name
@@ -217,17 +241,37 @@ for p in products:
         </div>
         <div class="related-product-info">
           <h4>{r_name}</h4>
-          <a href="{r_url}" class="btn btn-secondary btn-xs">View Product</a>
+          <a href="{r_url}" class="btn btn-secondary btn-xs card-link-stretched">View Product</a>
         </div>
       </div>
         '''
 
+    # Slice first sentence of description for inner banner supporting text
+    desc_clean = clean_weblink_boilerplate(p["description"], p_name)
+    first_sentence = desc_clean.split('.')[0].strip() + '.' if '.' in desc_clean else desc_clean
+    # Ensure it's not too long
+    if len(first_sentence) > 160:
+        first_sentence = first_sentence[:157] + "..."
+        
+    pdp_breadcrumbs = [("Products", "/products"), (category, "")]
+    # Note: main_image is already absolute-path structured like '/images/product/xxx'
+    # For css url('...'), it is fine to keep the leading slash
+    pdp_banner_html = render_banner(
+        eyebrow=category,
+        title=p_name,
+        description=first_sentence,
+        breadcrumbs=pdp_breadcrumbs,
+        bg_image=main_image,
+        stats_html='<div class="hero-stats-badge"><span class="pulse-dot"></span><span>Premium Industrial Grade</span></div>'
+    )
+
     # Render product details section
     detail_content = prod_detail_tpl
+    detail_content = detail_content.replace("{{unified_banner_html}}", pdp_banner_html)
     detail_content = detail_content.replace("{{product_name}}", p_name)
     detail_content = detail_content.replace("{{product_name_url}}", urllib.parse.quote(p_name))
     detail_content = detail_content.replace("{{category}}", category)
-    detail_content = detail_content.replace("{{description}}", clean_weblink_boilerplate(p["description"], p_name))
+    detail_content = detail_content.replace("{{description}}", desc_clean)
     detail_content = detail_content.replace("{{main_image}}", main_image)
     
     # Thumbnails hook
@@ -313,10 +357,10 @@ for p in products:
               <span class="tag-subtype">{sub_type}</span>
               <span class="tag-form">{form_label}</span>
             </div>
-            <h3 class="featured-title"><a href="{clean_url}">{p_name}</a></h3>
+            <h3 class="featured-title"><a href="{clean_url}" class="card-link-stretched">{p_name}</a></h3>
             <p class="featured-desc">{clean_weblink_boilerplate(p["description"], p_name)}</p>
           </div>
-          <div class="featured-actions">
+          <div class="featured-actions" style="position: relative; z-index: 2;">
             <a href="{clean_url}" class="btn btn-secondary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Details</a>
             <a href="https://wa.me/919215660695?text=Hi%20Santosh,%20I'm%20interested%20in%20buying%20{urllib.parse.quote(p_name)}." target="_blank" class="btn btn-primary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Enquire</a>
           </div>
@@ -332,10 +376,10 @@ for p in products:
         </div>
         <div class="featured-info">
           <div>
-            <h3 class="featured-title" style="margin-top: 10px;"><a href="{clean_url}">{p_name}</a></h3>
+            <h3 class="featured-title" style="margin-top: 10px;"><a href="{clean_url}" class="card-link-stretched">{p_name}</a></h3>
             <p class="featured-desc">{clean_weblink_boilerplate(p["description"], p_name)}</p>
           </div>
-          <div class="featured-actions">
+          <div class="featured-actions" style="position: relative; z-index: 2;">
             <a href="{clean_url}" class="btn btn-secondary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Details</a>
             <a href="https://wa.me/919215660695?text=Hi%20Santosh,%20I'm%20interested%20in%20buying%20{urllib.parse.quote(p_name)}." target="_blank" class="btn btn-primary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Enquire</a>
           </div>
@@ -372,10 +416,10 @@ for p in products:
               {segments_html}
               <span class="tag-subtype">{sub_type}</span>
             </div>
-            <h3 class="product-title"><a href="{clean_url}">{p_name}</a></h3>
+            <h3 class="product-title"><a href="{clean_url}" class="card-link-stretched">{p_name}</a></h3>
             <p class="product-desc">{clean_weblink_boilerplate(p["description"], p_name)}</p>
           </div>
-          <div class="product-actions">
+          <div class="product-actions" style="position: relative; z-index: 2;">
             <a href="{clean_url}" class="btn btn-secondary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Details</a>
             <a href="https://wa.me/919215660695?text=Hi%20Santosh,%20I'm%20interested%20in%20buying%20{urllib.parse.quote(p_name)}." target="_blank" class="btn btn-primary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Enquire</a>
           </div>
@@ -389,9 +433,18 @@ with open(src_products_path, 'r', encoding='utf-8') as f:
     src_products_content = f.read()
 
 # Replace placeholders
-products_content = src_products_content.replace("{{featured_products_html}}", featured_products_html)
+products_content = src_products_content.replace("{{featured_products_html}}", featured_products_no_labels_html)
 products_content = products_content.replace("{{products_grid_html}}", products_grid_html)
-products_content = products_content.replace("[PRODUCT_COUNT_CONFIRMED]", str(len(products)))
+
+products_banner_html = render_banner(
+    eyebrow="Our Catalog",
+    title="Industrial Specialty Chemicals",
+    description="High-performance oleochemicals, distilled fatty acids, paper chemicals, and packaging solutions.",
+    breadcrumbs=[("Products", "")],
+    bg_image="/images/slider/3.webp",
+    stats_html=f'<div class="hero-stats-badge"><span class="pulse-dot"></span><span>{len(products)} Specialty Products across 5 Industries</span></div>'
+)
+products_content = products_content.replace("{{unified_banner_html}}", products_banner_html)
 
 # Wrap in master layout
 products_html = render_page(
@@ -455,6 +508,36 @@ for page in core_pages:
         
     if page["src"] == "index.html":
         src_content = src_content.replace("{{featured_products_html}}", featured_products_no_labels_html)
+    elif page["src"] == "about-us.html":
+        pass  # About-us has its own static banner — no unified banner injection needed
+    elif page["src"] == "industries-we-serve.html":
+        banner_html = render_banner(
+            eyebrow="Key Verticals",
+            title="Industries We Serve",
+            description="High-performance oleochemicals, paper chemicals, and packaging solutions powering six core industries across India.",
+            breadcrumbs=[("Industries We Serve", "")],
+            bg_image="/images/slider/3.webp",
+            stats_html='''
+            <div class="banner-stats-container">
+              <div class="banner-stat-box"><span class="pulse-dot"></span><span>6 Core Sectors Supported</span></div>
+            </div>
+            '''
+        )
+        src_content = src_content.replace("{{unified_banner_html}}", banner_html)
+    elif page["src"] == "contact-us.html":
+        banner_html = render_banner(
+            eyebrow="Get In Touch",
+            title="Talk to Our Technical Sales Team",
+            description="Have an industrial scale inquiry or custom chemical requirements? Reach out to our engineers and sales team for direct assistance.",
+            breadcrumbs=[("Contact Us", "")],
+            bg_image="/images/slider/2.webp",
+            stats_html='''
+            <div class="banner-stats-container">
+              <div class="banner-stat-box"><span class="pulse-dot"></span><span>Average Response Time: &lt; 2 Hours</span></div>
+            </div>
+            '''
+        )
+        src_content = src_content.replace("{{unified_banner_html}}", banner_html)
         
     final_html = render_page(
         content=src_content,

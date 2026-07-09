@@ -1,44 +1,24 @@
-- [x] Update HTML content in `src/contact-us.html`
-  - [x] Rebuild Hero Band with modern text and animation classes
-  - [x] Add the three modern info-cards (Location, Hours, Quick Contact)
-  - [x] Implement dual-path layout (WhatsApp CTA on one side, styled form on the other)
-  - [x] Add Segmented Query Selector (Sample Request, Bulk Quote, Formulation, General) to the form
-  - [x] Keep honeypot and contact fields
-  - [x] Add response time trust line
-  - [x] Wrap Google Maps iframe in a styled container
-- [x] Add Redesign Styles in `css/style.css`
-  - [x] Style the three info-cards
-  - [x] Style the dual-path block and columns
-  - [x] Style the segmented selector (interactive buttons/radio buttons)
-  - [x] Style the custom map frame
-  - [x] Add responsiveness styling for mobile screens
-- [x] Compile and Verify Contact Page
-  - [x] Run `python3 generate_products.py`
-  - [x] Inspect the contact page in browser
-- [x] Add Featured Products to Homepage
-  - [x] Update `products_full.json` to feature the requested 4 products
-  - [x] Update `src/index.html` with Featured Products showcase placeholder
-  - [x] Implement `featured_products_no_labels_html` generator in `generate_products.py`
-  - [x] Clean/format cards on home page to omit segment/type tags
-  - [x] Fix missing Soya Fatty Acid Eco image using fallback copy
-  - [x] Re-compile and verify home/products pages
-- [x] Product Detail Page (PDP) Template Redesign
-  - [x] Redesign `templates/product_detail.html` HTML Structure
-    - [x] Rebuild Header breadcrumb and name
-    - [x] Create layout grid for main image lightbox + thumb row
-    - [x] Create Unified Spec Card placeholder
-    - [x] Create visual hierarchy in CTA Button row (WhatsApp primary, Direct Inquiry secondary, IndiaMART tertiary text)
-    - [x] Create document downloads disabled placeholders (TDS/COA)
-    - [x] Style certifications placeholder row
-    - [x] Restructure tabs to load dynamic spec/application/feature lists
-    - [x] Integrate related products placeholder `{{related_products_html}}`
-  - [x] Update `generate_products.py` Compilation Logic
-    - [x] Compile `unified_spec_card` dynamically combining specifications
-    - [x] Compute contextual related products matching categories
-    - [x] Ensure all generated paths resolve root-relatively (`/` prefix)
-  - [x] Add PDP styles in `css/style.css`
-    - [x] Style unified spec cards
-    - [x] Style document downloads & button hierarchies
-    - [x] Style related products grid and lightbox zoom effects
-    - [x] Verify styling responsiveness on mobile
-  - [x] Compile and verify all product pages
+- [x] Create Shared Inner Page Banner Template
+  - [x] Create `templates/inner_banner.html` defining the unified banner component structure
+- [x] Refactor Page Source Files (Remove custom headers, replace with placeholder)
+  - [x] Update `src/about-us.html` (remove split hero, insert placeholder `{{unified_banner_html}}`)
+  - [x] Update `src/industries-we-serve.html` (remove simple header, insert `{{unified_banner_html}}`)
+  - [x] Update `src/contact-us.html` (remove page-banner section, insert `{{unified_banner_html}}`)
+  - [x] Update `src/products.html` (remove page-banner section, insert `{{unified_banner_html}}`)
+  - [x] Update `templates/product_detail.html` (remove page-banner section, insert `{{unified_banner_html}}`)
+- [x] Implement Python Generator Logic
+  - [x] Load `inner_banner.html` template in `generate_products.py`
+  - [x] Build python rendering logic helper for unified banners
+  - [x] Inject unified banners into products page and core pages with proper parameters
+  - [x] Implement automatic product description first-sentence slicer for product page descriptions
+- [x] Add Banner Styling in `css/style.css`
+  - [x] Style the unified page banner background layer and low-opacity overlay
+  - [x] Style breadcrumbs, eyebrow tags, H1 page title, description
+  - [x] Add styling for stats row badges in banner
+  - [x] Add mobile/tablet responsive cropping and gradient overrides
+- [x] Fix Homepage Stats Counter Bug
+  - [x] Rewrite count-up script in `js/main.js` using modern `IntersectionObserver`
+  - [x] Use `requestAnimationFrame` and time-elapsed calculations for smooth, robust 60fps animations
+- [x] Compile and Verify
+  - [x] Execute `python3 generate_products.py`
+  - [x] Verify animations and page banner styling locally

@@ -106,39 +106,43 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // ==========================================
-  // 5. FACTS COUNTER ANIMATION
+  // 5. FACTS COUNTER ANIMATION (IntersectionObserver)
   // ==========================================
   const counters = document.querySelectorAll(".fact-counter");
-  let countersAnimated = false;
-
-  function runCounters() {
-    if (countersAnimated || counters.length === 0) return;
-    const firstCounter = counters[0];
-    const rect = firstCounter.getBoundingClientRect();
-    if (rect.top < window.innerHeight + 100) {
-      countersAnimated = true;
-      counters.forEach(counter => {
-        const target = +counter.getAttribute("data-target");
-        const speed = 200;
-        const increment = target / speed;
-        let count = 0;
-        const updateCount = () => {
-          count += increment;
-          if (count < target) {
-            counter.innerText = Math.ceil(count);
-            setTimeout(updateCount, 1);
-          } else {
-            counter.innerText = target;
-          }
-        };
-        updateCount();
-      });
-    }
-  }
-
   if (counters.length > 0) {
-    window.addEventListener("scroll", runCounters);
-    runCounters();
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = +counter.getAttribute("data-target");
+          const duration = 1500; // Animation duration in ms
+          const startTime = performance.now();
+          
+          const animateCount = (currentTime) => {
+            const elapsedTime = currentTime - startTime;
+            const progress = Math.min(elapsedTime / duration, 1);
+            // Ease out quad formula
+            const easeProgress = progress * (2 - progress);
+            const currentValue = Math.floor(easeProgress * target);
+            
+            counter.innerText = currentValue;
+            
+            if (progress < 1) {
+              requestAnimationFrame(animateCount);
+            } else {
+              counter.innerText = target;
+            }
+          };
+          
+          requestAnimationFrame(animateCount);
+          observer.unobserve(counter); // Trigger once per element
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    counters.forEach(counter => {
+      counterObserver.observe(counter);
+    });
   }
 
   // ==========================================
@@ -156,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   if (revealElements.length > 0) {
-    window.addEventListener("scroll", runReveal);
+    window.addEventListener("scroll", runReveal, { passive: true });
     runReveal();
   }
 
@@ -175,13 +179,35 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Sticky Navbar Scroll Effect
+  // Sticky Navbar Scroll Effect (IntersectionObserver)
   const navBarElement = document.querySelector(".nav-bar");
-  if (navBarElement) {
-    window.addEventListener("scroll", function() {
-      navBarElement.classList.toggle("scrolled", window.scrollY > 30);
+  const heroSentinel = document.querySelector(".hero-end-sentinel");
+
+  if (navBarElement && heroSentinel) {
+    let navToggleTimeout = null;
+    const navObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (navToggleTimeout) clearTimeout(navToggleTimeout);
+        navToggleTimeout = setTimeout(() => {
+          navBarElement.classList.toggle("scrolled", !entry.isIntersecting);
+        }, 10);
+      },
+      { rootMargin: "-1px 0px 0px 0px", threshold: 0 }
+    );
+    navObserver.observe(heroSentinel);
+
+    // Set initial state on load (handles back/forward cache)
+    requestAnimationFrame(() => {
+      if (heroSentinel.getBoundingClientRect().top <= 0) {
+        navBarElement.classList.add("scrolled");
+      }
     });
-    if (window.scrollY > 30) navBarElement.classList.add("scrolled");
+  } else if (navBarElement) {
+    // Fallback if no sentinel exists
+    window.addEventListener("scroll", function() {
+      navBarElement.classList.toggle("scrolled", window.scrollY > 50);
+    }, { passive: true });
+    if (window.scrollY > 50) navBarElement.classList.add("scrolled");
   }
 
   // ==========================================
