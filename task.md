@@ -1,0 +1,44 @@
+- [x] Update HTML content in `src/contact-us.html`
+  - [x] Rebuild Hero Band with modern text and animation classes
+  - [x] Add the three modern info-cards (Location, Hours, Quick Contact)
+  - [x] Implement dual-path layout (WhatsApp CTA on one side, styled form on the other)
+  - [x] Add Segmented Query Selector (Sample Request, Bulk Quote, Formulation, General) to the form
+  - [x] Keep honeypot and contact fields
+  - [x] Add response time trust line
+  - [x] Wrap Google Maps iframe in a styled container
+- [x] Add Redesign Styles in `css/style.css`
+  - [x] Style the three info-cards
+  - [x] Style the dual-path block and columns
+  - [x] Style the segmented selector (interactive buttons/radio buttons)
+  - [x] Style the custom map frame
+  - [x] Add responsiveness styling for mobile screens
+- [x] Compile and Verify Contact Page
+  - [x] Run `python3 generate_products.py`
+  - [x] Inspect the contact page in browser
+- [x] Add Featured Products to Homepage
+  - [x] Update `products_full.json` to feature the requested 4 products
+  - [x] Update `src/index.html` with Featured Products showcase placeholder
+  - [x] Implement `featured_products_no_labels_html` generator in `generate_products.py`
+  - [x] Clean/format cards on home page to omit segment/type tags
+  - [x] Fix missing Soya Fatty Acid Eco image using fallback copy
+  - [x] Re-compile and verify home/products pages
+- [x] Product Detail Page (PDP) Template Redesign
+  - [x] Redesign `templates/product_detail.html` HTML Structure
+    - [x] Rebuild Header breadcrumb and name
+    - [x] Create layout grid for main image lightbox + thumb row
+    - [x] Create Unified Spec Card placeholder
+    - [x] Create visual hierarchy in CTA Button row (WhatsApp primary, Direct Inquiry secondary, IndiaMART tertiary text)
+    - [x] Create document downloads disabled placeholders (TDS/COA)
+    - [x] Style certifications placeholder row
+    - [x] Restructure tabs to load dynamic spec/application/feature lists
+    - [x] Integrate related products placeholder `{{related_products_html}}`
+  - [x] Update `generate_products.py` Compilation Logic
+    - [x] Compile `unified_spec_card` dynamically combining specifications
+    - [x] Compute contextual related products matching categories
+    - [x] Ensure all generated paths resolve root-relatively (`/` prefix)
+  - [x] Add PDP styles in `css/style.css`
+    - [x] Style unified spec cards
+    - [x] Style document downloads & button hierarchies
+    - [x] Style related products grid and lightbox zoom effects
+    - [x] Verify styling responsiveness on mobile
+  - [x] Compile and verify all product pages

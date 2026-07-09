@@ -80,12 +80,12 @@ print("Generating 30 product detail pages...")
 for p in products:
     p_name = p["product_name"]
     category = p["category"]
-    filename = p["link"].split('/')[-1] # e.g. akd-wax-emulsion.htm (matches live SEO exactly)
+    filename = p["link"].split('/')[-1] # e.g. akd-wax-emulsion.htm
     dir_name = filename.replace('.htm', '') # e.g. akd-wax-emulsion
     
-    # Format images
+    # Format images with root-relative paths
     img_list = p["images"]
-    main_image = img_list[0] if img_list else "images/product/default.webp"
+    main_image = "/" + img_list[0] if img_list else "/images/product/default.webp"
     
     # Thumbnails formatting
     has_thumbs = len(img_list) > 1
@@ -93,34 +93,77 @@ for p in products:
     if has_thumbs:
         for idx, img in enumerate(img_list):
             active_class = "active" if idx == 0 else ""
-            thumbs_html += f'<div class="gallery-thumb {active_class}" data-large="{img}"><img src="{img}" alt="{p_name} Thumb"></div>'
+            thumbs_html += f'<div class="gallery-thumb {active_class}" data-large="/{img}"><img src="/{img}" alt="{p_name} Thumb"></div>'
             
-    # Specifications Table
-    specs = p["specs_table"]
-    has_specs = len(specs) > 0
-    specs_rows = ""
-    if has_specs:
-        for k, v in specs.items():
-            specs_rows += f'<tr><td class="label-col">{k}</td><td class="val-col">{v}</td></tr>'
+    # Build Unified Spec Card
+    unified_fields = [
+        "Business Type", "Form", "Color", "Purity", "Shelf Life", 
+        "Country of Origin", "Type", "Material"
+    ]
+    
+    all_specs = {}
+    if "specs_table" in p:
+        for k, v in p["specs_table"].items():
+            all_specs[k.lower().strip()] = (k, v)
+    if "detailed_specs" in p:
+        for k, v in p["detailed_specs"].items():
+            all_specs[k.lower().strip()] = (k, v)
             
-    # Detailed Specifications Grid
-    detailed_specs = p["detailed_specs"]
-    has_detailed_specs = len(detailed_specs) > 0
-    detailed_specs_rows = ""
-    if has_detailed_specs:
-        for k, v in detailed_specs.items():
-            detailed_specs_rows += f'<div class="spec-detail-item"><span class="lbl">{k}</span><span class="val">{v}</span></div>'
+    unified_spec_rows = ""
+    used_keys = set()
+    for field in unified_fields:
+        field_key = field.lower()
+        matching_key = None
+        if field_key == "form" and "form" in all_specs:
+            matching_key = "form"
+        elif field_key == "form" and "physical form" in all_specs:
+            matching_key = "physical form"
+        else:
+            for k in all_specs:
+                if field_key in k:
+                    matching_key = k
+                    break
+        
+        if matching_key and matching_key in all_specs:
+            k_orig, v = all_specs[matching_key]
+            # Exclude Application field
+            if "application" not in k_orig.lower():
+                unified_spec_rows += f'<div class="pdp-spec-item"><span class="pdp-spec-lbl">{k_orig}</span><span class="pdp-spec-val">{v}</span></div>'
+                used_keys.add(matching_key)
+            
+    if not unified_spec_rows:
+        unified_spec_rows = '<div class="pdp-spec-item"><span class="pdp-spec-lbl">Business Type</span><span class="pdp-spec-val">Manufacturer &amp; Supplier</span></div>'
+        
+    # Detailed Specifications Grid (Deduplicated - only show unused fields)
+    detailed_spec_rows = ""
+    for k in all_specs:
+        if k in used_keys:
+            continue
+        if "application" in k:
+            continue
+        k_orig, v = all_specs[k]
+        detailed_spec_rows += f'<div class="spec-detail-item"><span class="lbl">{k_orig}</span><span class="val">{v}</span></div>'
+        
+    if detailed_spec_rows:
+        detailed_specs_html = '<div class="specs-detail-grid">' + detailed_spec_rows + '</div>'
+    else:
+        detailed_specs_html = '<p style="color: var(--text-muted); font-style: italic;">Detailed specifications are available upon request. Please contact our technical team.</p>'
 
-    # Features formatting
+    # Features formatting with icon bullets
     features_list = p["features"]
     features_html = ""
     if features_list:
-        features_html += "<h3>Key Features & Benefits:</h3><ul style='list-style-type: disc; padding-left: 20px; margin-top: 10px; display: flex; flex-direction: column; gap: 8px;'>"
+        features_html += '<ul class="pdp-features-list">'
         for f in features_list:
-            features_html += f"<li>{f}</li>"
+            features_html += f'''
+          <li>
+            <svg class="feature-bullet-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>{f}</span>
+          </li>
+            '''
         features_html += "</ul>"
     else:
-        features_html = f"<p>{p['description']}</p>"
+        features_html = f"<p>{clean_weblink_boilerplate(p['description'], p_name)}</p>"
 
     # Applications formatting
     apps_text = p.get("applications", "")
@@ -132,17 +175,52 @@ for p in products:
             
     apps_html = ""
     if apps_text:
-        # split by newline if present
         lines = [line.strip() for line in apps_text.split('\n') if line.strip()]
         if len(lines) > 1:
-            apps_html += "<ul style='list-style-type: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 8px;'>"
+            apps_html += '<ul class="pdp-features-list">'
             for line in lines:
-                apps_html += f"<li>{line}</li>"
+                apps_html += f'''
+              <li>
+                <svg class="feature-bullet-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon><polyline points="2 8.5 12 15 22 8.5"></polyline><polyline points="12 22 12 15"></polyline></svg>
+                <span>{line}</span>
+              </li>
+                '''
             apps_html += "</ul>"
         else:
             apps_html = f"<p>{apps_text}</p>"
     else:
         apps_html = "<p>Standard industrial applications. Please consult our technical experts for formulation guidelines.</p>"
+
+    # Contextual Related Products (3 items from same category)
+    related_list = []
+    for other in products:
+        if other["product_name"] != p_name and other["category"] == category:
+            related_list.append(other)
+    if len(related_list) < 3:
+        for other in products:
+            if other["product_name"] != p_name and other not in related_list:
+                related_list.append(other)
+    related_list = related_list[:3]
+    
+    related_products_html = ""
+    for r in related_list:
+        r_name = r["product_name"]
+        r_filename = r["link"].split('/')[-1]
+        r_dir_name = r_filename.replace('.htm', '')
+        r_url = f"/{r_dir_name}/"
+        r_img = r["images"][0] if r["images"] else "images/product/default.webp"
+        
+        related_products_html += f'''
+      <div class="related-product-card">
+        <div class="related-product-img">
+          <img src="/{r_img}" alt="{r_name}" loading="lazy">
+        </div>
+        <div class="related-product-info">
+          <h4>{r_name}</h4>
+          <a href="{r_url}" class="btn btn-secondary btn-xs">View Product</a>
+        </div>
+      </div>
+        '''
 
     # Render product details section
     detail_content = prod_detail_tpl
@@ -159,23 +237,11 @@ for p in products:
     else:
         detail_content = re.sub(r'{% if has_thumbs %}.*?{% endif %}', '', detail_content, flags=re.DOTALL)
         
-    # Specs table hook
-    if has_specs:
-        detail_content = re.sub(r'{% if has_specs %}(.*?){% endif %}', r'\1', detail_content, flags=re.DOTALL)
-        detail_content = re.sub(r'{% for spec_key, spec_val in specs.items\(\) %}.*?{% endfor %}', specs_rows, detail_content, flags=re.DOTALL)
-    else:
-        detail_content = re.sub(r'{% if has_specs %}.*?{% endif %}', '', detail_content, flags=re.DOTALL)
-        
-    # Detailed Specs grid hook
-    if has_detailed_specs:
-        detailed_specs_html = '<div class="specs-detail-grid">' + detailed_specs_rows + '</div>'
-    else:
-        detailed_specs_html = '<p style="color: var(--text-muted); font-style: italic;">Detailed specifications are available upon request. Please contact us.</p>'
-        
+    detail_content = detail_content.replace("{{unified_spec_card_html}}", unified_spec_rows)
     detail_content = detail_content.replace("{{detailed_specs_html}}", detailed_specs_html)
-
     detail_content = detail_content.replace("{{features_html}}", features_html)
     detail_content = detail_content.replace("{{applications_html}}", apps_html)
+    detail_content = detail_content.replace("{{related_products_html}}", related_products_html)
 
     # Wrap in master layout
     final_html = render_page(
@@ -198,35 +264,114 @@ for p in products:
 # 2. BUILD PRODUCTS CATALOG PAGE (products.htm)
 # ==========================================
 print("\nGenerating catalog page products.htm...")
+
+def make_segment_badges(segments):
+    seg_map = {
+        "personal-care": "Personal Care & Cosmetics",
+        "paints-coatings": "Paints Coatings & Inks",
+        "paper-pulp": "Paper & Pulp",
+        "agri-food": "Agri & Food",
+        "rubber-plastics": "Rubber & Plastics"
+    }
+    badges = []
+    for s in segments:
+        if s in seg_map:
+            badges.append(f'<span class="tag-segment tag-{s}">{seg_map[s]}</span>')
+    return "".join(badges)
+
+# Build Featured Products Row HTML (from featured flag)
+featured_products_html = ""
+featured_products_no_labels_html = ""
+for p in products:
+    if p.get("featured", False):
+        p_name = p["product_name"]
+        filename = p["link"].split('/')[-1]
+        dir_name = filename.replace('.htm', '')
+        clean_url = f"/{dir_name}"
+        img_list = p["images"]
+        main_image = img_list[0] if img_list else "images/product/default.webp"
+        
+        segments_html = make_segment_badges(p.get("market_segments", []))
+        sub_type = p.get("sub_type", "Specialty")
+        form_label = p.get("physical_form", "N/A")
+        
+        # Determine featured badge (Bestseller vs Popular)
+        f_badge = "Bestseller"
+        if "akd" in p_name.lower():
+            f_badge = "Popular"
+            
+        featured_products_html += f'''
+      <div class="featured-card">
+        <div class="featured-image">
+          <span class="featured-badge">{f_badge}</span>
+          <img src="{main_image}" alt="{p_name}" loading="lazy">
+        </div>
+        <div class="featured-info">
+          <div>
+            <div class="featured-tags">
+              {segments_html}
+              <span class="tag-subtype">{sub_type}</span>
+              <span class="tag-form">{form_label}</span>
+            </div>
+            <h3 class="featured-title"><a href="{clean_url}">{p_name}</a></h3>
+            <p class="featured-desc">{clean_weblink_boilerplate(p["description"], p_name)}</p>
+          </div>
+          <div class="featured-actions">
+            <a href="{clean_url}" class="btn btn-secondary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Details</a>
+            <a href="https://wa.me/919215660695?text=Hi%20Santosh,%20I'm%20interested%20in%20buying%20{urllib.parse.quote(p_name)}." target="_blank" class="btn btn-primary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Enquire</a>
+          </div>
+        </div>
+      </div>
+        '''
+
+        # Version without badges or tags
+        featured_products_no_labels_html += f'''
+      <div class="featured-card">
+        <div class="featured-image">
+          <img src="{main_image}" alt="{p_name}" loading="lazy">
+        </div>
+        <div class="featured-info">
+          <div>
+            <h3 class="featured-title" style="margin-top: 10px;"><a href="{clean_url}">{p_name}</a></h3>
+            <p class="featured-desc">{clean_weblink_boilerplate(p["description"], p_name)}</p>
+          </div>
+          <div class="featured-actions">
+            <a href="{clean_url}" class="btn btn-secondary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Details</a>
+            <a href="https://wa.me/919215660695?text=Hi%20Santosh,%20I'm%20interested%20in%20buying%20{urllib.parse.quote(p_name)}." target="_blank" class="btn btn-primary btn-sm" style="flex: 1; font-size: 13px; padding: 8px 12px;">Enquire</a>
+          </div>
+        </div>
+      </div>
+        '''
+
 # Build products catalog grid HTML
 products_grid_html = ""
 for p in products:
     p_name = p["product_name"]
-    category = p["category"]
     filename = p["link"].split('/')[-1]
     dir_name = filename.replace('.htm', '')
     clean_url = f"/{dir_name}"
-    cat_slug = get_cat_slug(category)
+    
+    segments = p.get("market_segments", [])
+    segments_str = ",".join(segments)
+    sub_type = p.get("sub_type", "Specialty")
+    form_val = p.get("physical_form", "N/A")
+    
     img_list = p["images"]
     main_image = img_list[0] if img_list else "images/product/default.webp"
     
-    # Check for best sellers or limited stock tags
-    badge_html = ""
-    p_name_lower = p_name.lower()
-    if "soya lecithin" in p_name_lower or "oleic" in p_name_lower:
-        badge_html = '<span class="product-badge">Bestseller</span>'
-    elif "akd" in p_name_lower:
-        badge_html = '<span class="product-badge">Popular</span>'
-        
+    segments_html = make_segment_badges(segments)
+    
     products_grid_html += f'''
-      <div class="product-card" data-category="{cat_slug}">
+      <div class="product-card" data-segments="{segments_str}" data-form="{form_val}">
         <div class="product-image">
-          {badge_html}
           <img src="{main_image}" alt="{p_name}" loading="lazy">
         </div>
         <div class="product-info">
           <div>
-            <span class="product-cat">{category}</span>
+            <div class="product-tags">
+              {segments_html}
+              <span class="tag-subtype">{sub_type}</span>
+            </div>
             <h3 class="product-title"><a href="{clean_url}">{p_name}</a></h3>
             <p class="product-desc">{clean_weblink_boilerplate(p["description"], p_name)}</p>
           </div>
@@ -243,8 +388,10 @@ src_products_path = os.path.join(base_dir, "src", "products.html")
 with open(src_products_path, 'r', encoding='utf-8') as f:
     src_products_content = f.read()
 
-# Replace placeholder
-products_content = src_products_content.replace("{{products_grid_html}}", products_grid_html)
+# Replace placeholders
+products_content = src_products_content.replace("{{featured_products_html}}", featured_products_html)
+products_content = products_content.replace("{{products_grid_html}}", products_grid_html)
+products_content = products_content.replace("[PRODUCT_COUNT_CONFIRMED]", str(len(products)))
 
 # Wrap in master layout
 products_html = render_page(
@@ -305,6 +452,9 @@ for page in core_pages:
     src_path = os.path.join(base_dir, "src", page["src"])
     with open(src_path, 'r', encoding='utf-8') as f:
         src_content = f.read()
+        
+    if page["src"] == "index.html":
+        src_content = src_content.replace("{{featured_products_html}}", featured_products_no_labels_html)
         
     final_html = render_page(
         content=src_content,

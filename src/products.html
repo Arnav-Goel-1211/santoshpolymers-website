@@ -1,88 +1,277 @@
-<!-- Page Banner -->
-<section class="page-banner">
+<!-- Page Banner / Hero -->
+<section class="page-banner products-hero">
   <div class="container">
-    <h1>Our Products</h1>
-    <div class="breadcrumbs">
-      <a href="/">Home</a>
-      <span>&rsaquo;</span>
-      <span>Products</span>
+    <div class="reveal">
+      <span class="section-subtitle" style="color: var(--secondary-color); font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; display: inline-block;">Our Catalog</span>
+      <h1>Industrial Specialty Chemicals</h1>
+      <p style="color: rgba(255, 255, 255, 0.9); font-size: var(--text-lg); max-width: 700px; margin: 0 auto 24px; line-height: 1.6;">
+        High-performance oleochemicals, distilled fatty acids, paper chemicals, herbal extracts, and eco-friendly packaging solutions.
+      </p>
+      <div class="hero-stats-badge">
+        <span class="pulse-dot"></span>
+        <span>[PRODUCT_COUNT_CONFIRMED]+ specialty chemicals across 5 industries</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Product Catalog Filter tabs -->
-<section class="section">
+<!-- Featured Products Showcase -->
+<section class="featured-section">
+  <div class="container">
+    <div class="section-header-left reveal">
+      <span class="section-subtitle">Showcase</span>
+      <h2 class="section-title">Featured Products</h2>
+      <p>High-demand specialty chemicals and market-leading formulations</p>
+    </div>
+    <div class="featured-row" id="featuredRow">
+      {{featured_products_html}}
+    </div>
+  </div>
+</section>
+
+<!-- Catalog Filter Section -->
+<section class="section" style="padding-top: 40px; background-color: var(--bg-secondary);">
   <div class="container">
     
-    <!-- Filter Buttons -->
-    <div class="product-filters">
-      <button class="filter-btn active" data-filter="all">All Products</button>
-      <button class="filter-btn" data-filter="oleo-chemicals">Oleo Chemicals</button>
-      <button class="filter-btn" data-filter="paper-chemicals">Paper Chemicals</button>
-      <button class="filter-btn" data-filter="herbal-extracts">Herbal Extracts</button>
-      <button class="filter-btn" data-filter="packaging-solutions">Packaging Solutions</button>
+    <!-- Consolidated Filters Control Panel -->
+    <div class="filters-panel-wrapper reveal">
+      
+      <!-- Market Segment Scrollable Pills -->
+      <div class="segment-pills-container">
+        <div class="segment-pills-row">
+          <button class="pill-btn active" data-segment="all">All Products</button>
+          <button class="pill-btn" data-segment="personal-care">Personal Care & Cosmetics</button>
+          <button class="pill-btn" data-segment="paints-coatings">Paints Coatings & Inks</button>
+          <button class="pill-btn" data-segment="paper-pulp">Paper & Pulp</button>
+          <button class="pill-btn" data-segment="agri-food">Agri & Food</button>
+          <button class="pill-btn" data-segment="rubber-plastics">Rubber & Plastics</button>
+        </div>
+      </div>
+      
+      <!-- Search Box & More Filters -->
+      <div class="filter-controls-row">
+        <div class="search-input-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="catalogSearch" placeholder="Search product name or keywords...">
+          <button id="clearSearch" aria-label="Clear Search">&times;</button>
+        </div>
+        
+        <button class="more-filters-btn" id="moreFiltersToggle" aria-expanded="false">
+          <span>More Filters</span>
+          <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        
+        <button class="more-filters-btn" id="resetAllFiltersBtn" style="display: none; border-color: rgba(239, 68, 68, 0.4); color: #ef4444; background-color: #fef2f2;">
+          <span>Clear Filters</span>
+        </button>
+      </div>
+      
+    </div>
+    
+    <!-- Secondary Expandable Filters Panel -->
+    <div class="secondary-expandable-panel" id="secondaryFiltersPanel">
+      <div class="form-filter-container">
+        <span class="filter-label">Physical Form:</span>
+        <div class="form-pills-row">
+          <button class="form-pill active" data-form="all">Any Form</button>
+          <button class="form-pill" data-form="Liquid">Liquid</button>
+          <button class="form-pill" data-form="Powder">Powder</button>
+          <button class="form-pill" data-form="Solid">Solid</button>
+          <button class="form-pill" data-form="Oil">Oil</button>
+        </div>
+      </div>
     </div>
     
     <!-- Product Grid -->
-    <div class="grid grid-3" id="productsCatalogGrid">
+    <div class="grid grid-4" id="productsCatalogGrid">
       {{products_grid_html}}
+    </div>
+    
+    <!-- No Results Box -->
+    <div class="no-results-card" id="noResultsAlert">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+      <h3>No Products Found</h3>
+      <p>No products in our catalog match your current segment, search query, or form criteria.</p>
+      <button class="btn btn-primary btn-sm" id="resetFiltersButton">Reset All Filters</button>
     </div>
     
   </div>
 </section>
 
-<!-- Include script inline for filtering, since jquery shuffle is gone -->
+<!-- Filter Script -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const filterBtns = document.querySelectorAll(".filter-btn");
+  const segmentBtns = document.querySelectorAll(".pill-btn");
+  const formBtns = document.querySelectorAll(".form-pill");
+  const searchInput = document.getElementById("catalogSearch");
+  const clearSearchBtn = document.getElementById("clearSearch");
+  const moreFiltersToggle = document.getElementById("moreFiltersToggle");
+  const secondaryFiltersPanel = document.getElementById("secondaryFiltersPanel");
   const productCards = document.querySelectorAll("#productsCatalogGrid .product-card");
+  const productsGrid = document.getElementById("productsCatalogGrid");
+  const noResultsAlert = document.getElementById("noResultsAlert");
+  const resetFiltersButton = document.getElementById("resetFiltersButton");
+  const resetAllFiltersBtn = document.getElementById("resetAllFiltersBtn");
 
-  function filterProducts(filterVal) {
-    productCards.forEach(card => {
-      const cardCat = card.getAttribute("data-category");
-      if (filterVal === "all" || cardCat === filterVal) {
-        card.style.display = "flex";
-        card.style.opacity = 0;
-        setTimeout(() => {
-          card.style.opacity = 1;
-          card.style.transition = "opacity 0.4s ease";
-        }, 50);
-      } else {
-        card.style.display = "none";
-      }
+  let activeSegment = "all";
+  let activeForm = "all";
+  let searchQuery = "";
+
+  // 1. More Filters Expand / Collapse
+  if (moreFiltersToggle && secondaryFiltersPanel) {
+    moreFiltersToggle.addEventListener("click", function() {
+      const isExpanded = this.getAttribute("aria-expanded") === "true";
+      this.setAttribute("aria-expanded", !isExpanded);
+      this.classList.toggle("active");
+      secondaryFiltersPanel.classList.toggle("open");
     });
   }
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener("click", function() {
-      // Toggle active class on buttons
-      filterBtns.forEach(b => b.classList.remove("active"));
-      this.classList.add("active");
+  // 2. Filter Application Function with Fade Transition
+  function applyFilters() {
+    // Add filtering transition class (causes grid to fade out slightly)
+    productsGrid.classList.add("filtering-transition");
 
-      const filterVal = this.getAttribute("data-filter");
-      filterProducts(filterVal);
+    setTimeout(() => {
+      let visibleCount = 0;
+      
+      productCards.forEach(card => {
+        const segmentsAttr = card.getAttribute("data-segments") || "";
+        const productSegments = segmentsAttr.split(",").map(s => s.trim());
+        const productForm = card.getAttribute("data-form") || "N/A";
+        const productName = card.querySelector(".product-title").textContent.toLowerCase();
+        const productDesc = card.querySelector(".product-desc").textContent.toLowerCase();
+        const subTypeTag = card.querySelector(".tag-subtype")?.textContent.toLowerCase() || "";
+
+        // Checks
+        const matchesSegment = activeSegment === "all" || productSegments.includes(activeSegment);
+        const matchesForm = activeForm === "all" || productForm.toLowerCase() === activeForm.toLowerCase();
+        
+        const q = searchQuery.toLowerCase().trim();
+        const matchesSearch = q === "" || 
+                              productName.includes(q) || 
+                              productDesc.includes(q) ||
+                              subTypeTag.includes(q);
+
+        if (matchesSegment && matchesForm && matchesSearch) {
+          card.style.display = "flex";
+          // Add slight delay for reflow reveal
+          setTimeout(() => { card.style.opacity = "1"; card.style.transform = "translateY(0)"; }, 20);
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+          card.style.opacity = "0";
+          card.style.transform = "translateY(10px)";
+        }
+      });
+
+      // No Results Alert Toggle
+      if (visibleCount === 0) {
+        noResultsAlert.style.display = "block";
+        setTimeout(() => noResultsAlert.style.opacity = "1", 20);
+      } else {
+        noResultsAlert.style.display = "none";
+        noResultsAlert.style.opacity = "0";
+      }
+
+      // Show/hide main clear button
+      const hasActiveFilters = activeSegment !== "all" || activeForm !== "all" || searchQuery !== "";
+      if (resetAllFiltersBtn) {
+        resetAllFiltersBtn.style.display = hasActiveFilters ? "inline-flex" : "none";
+      }
+
+      // Remove transition class to fade back in
+      productsGrid.classList.remove("filtering-transition");
+    }, 200);
+  }
+
+  // 3. Segment Pill Click Handler
+  segmentBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+      segmentBtns.forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+      activeSegment = this.getAttribute("data-segment");
+      applyFilters();
     });
   });
 
-  // Handle initial filter based on URL hash
-  function applyHashFilter() {
+  // 4. Form Pill Click Handler
+  formBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+      formBtns.forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+      activeForm = this.getAttribute("data-form");
+      applyFilters();
+    });
+  });
+
+  // 5. Search Input Handler
+  if (searchInput) {
+    searchInput.addEventListener("input", function() {
+      searchQuery = this.value;
+      if (clearSearchBtn) {
+        clearSearchBtn.style.display = searchQuery ? "flex" : "none";
+      }
+      applyFilters();
+    });
+  }
+
+  // 6. Clear Search Button
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener("click", function() {
+      searchInput.value = "";
+      searchQuery = "";
+      this.style.display = "none";
+      searchInput.focus();
+      applyFilters();
+    });
+  }
+
+  // 7. Reset Filters Button
+  function resetAll() {
+    activeSegment = "all";
+    activeForm = "all";
+    searchQuery = "";
+    
+    segmentBtns.forEach(b => b.classList.remove("active"));
+    segmentBtns[0].classList.add("active");
+    
+    formBtns.forEach(b => b.classList.remove("active"));
+    formBtns[0].classList.add("active");
+
+    if (searchInput) {
+      searchInput.value = "";
+      if (clearSearchBtn) clearSearchBtn.style.display = "none";
+    }
+
+    applyFilters();
+  }
+
+  if (resetFiltersButton) resetFiltersButton.addEventListener("click", resetAll);
+  if (resetAllFiltersBtn) resetAllFiltersBtn.addEventListener("click", resetAll);
+
+  // 8. URL Hash Handler (Routing to specific segment, e.g., /products#paper-pulp)
+  function handleUrlHash() {
     const hash = window.location.hash;
     if (hash) {
-      const filterVal = hash.substring(1); // remove '#'
-      const targetBtn = document.querySelector(`.filter-btn[data-filter="${filterVal}"]`);
+      const targetSegment = hash.substring(1);
+      const targetBtn = document.querySelector(`.pill-btn[data-segment="${targetSegment}"]`);
       if (targetBtn) {
-        // Toggle active class on buttons
-        filterBtns.forEach(b => b.classList.remove("active"));
+        segmentBtns.forEach(b => b.classList.remove("active"));
         targetBtn.classList.add("active");
-        filterProducts(filterVal);
+        activeSegment = targetSegment;
+        
+        // Scroll target pill into view
+        targetBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        applyFilters();
       }
     }
   }
 
-  // Run on load
-  applyHashFilter();
-
-  // Run when hash changes
-  window.addEventListener("hashchange", applyHashFilter);
+  // Run URL hash parsing on load
+  handleUrlHash();
+  
+  // Listen for hash changes
+  window.addEventListener("hashchange", handleUrlHash);
 });
 </script>

@@ -35,7 +35,14 @@
             "images/product/distilled-soya-fatty-acid-oil_0.jpeg",
             "images/product/distilled-soya-fatty-acid-oil_1.jpeg",
             "images/product/distilled-soya-fatty-acid-oil_2.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "paints-coatings",
+            "rubber-plastics"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Oil",
+        "featured": true
     },
     {
         "label": "Distilled Rice Fatty Acid",
@@ -71,7 +78,14 @@
         "applications": "Soap manufacturing, alkyd resins for paints, rubber compounding, and industrial emulsifier production.",
         "images": [
             "images/product/distilled-rice-fatty-acid_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "paints-coatings"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Soya Acid Oil",
@@ -102,7 +116,14 @@
         "applications": "Animal and poultry feed fat additive, laundry soap manufacturing, raw material for biodiesel, and industrial lubricants.",
         "images": [
             "images/product/soya-acid-oil_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "agri-food",
+            "paints-coatings"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Oleic Fatty Acid",
@@ -145,7 +166,15 @@
         "applications": "Metalworking lubricants, drilling fluids, textile finishing, paint driers, liquid soaps, and PVC stabilizers.",
         "images": [
             "images/product/oleic-fatty-acid_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "paints-coatings",
+            "rubber-plastics"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Liquid",
+        "featured": true
     },
     {
         "label": "Poultry Feed Oil",
@@ -181,7 +210,13 @@
             "images/product/poultry-feed-oil_0.jpeg",
             "images/product/poultry-feed-oil_1.jpeg",
             "images/product/poultry-feed-oil_2.jpg"
-        ]
+        ],
+        "market_segments": [
+            "agri-food"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Liquid",
+        "featured": true
     },
     {
         "label": "Food Additive Sorbitan Monooleate",
@@ -216,7 +251,13 @@
         "applications": "Food packaging, cosmetic emulsions, pharmaceutical creams, and industrial surfactant formulations.",
         "images": [
             "images/product/food-additive-sorbitan-monooleate_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "agri-food"
+        ],
+        "sub_type": "Lecithin & Emulsifier",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "PEG-400 Monooleate",
@@ -251,7 +292,13 @@
         "applications": "Emulsifier in textile lubricants, cosmetic formulations, agricultural sprays, and metalworking fluids.",
         "images": [
             "images/product/peg-400-monooleate_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care"
+        ],
+        "sub_type": "Lecithin & Emulsifier",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Rice Bran Lecithin",
@@ -286,7 +333,15 @@
             "images/product/rice-bran-lecithin_0.jpeg",
             "images/product/rice-bran-lecithin_1.jpeg",
             "images/product/rice-bran-lecithin_2.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "agri-food",
+            "paints-coatings"
+        ],
+        "sub_type": "Lecithin & Emulsifier",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Liquid Soya Lecithin",
@@ -322,7 +377,15 @@
             "images/product/liquid-soya-lecithin_0.jpeg",
             "images/product/liquid-soya-lecithin_1.jpeg",
             "images/product/liquid-soya-lecithin_2.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "agri-food",
+            "paints-coatings"
+        ],
+        "sub_type": "Lecithin & Emulsifier",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Bypass Fat 84%",
@@ -353,7 +416,13 @@
         "applications": "Nutritional energy supplement for high-yielding dairy cows, buffaloes, sheep, and goats.",
         "images": [
             "images/product/bypass-fat-84_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "agri-food"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Powder",
+        "featured": false
     },
     {
         "label": "Calcium Stearate Chemical",
@@ -387,7 +456,15 @@
             "images/product/calcium-stearate-chemical_0.jpeg",
             "images/product/calcium-stearate-chemical_1.jpeg",
             "images/product/calcium-stearate-chemical_2.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "rubber-plastics",
+            "paints-coatings",
+            "personal-care"
+        ],
+        "sub_type": "Stearate & Salt",
+        "physical_form": "Powder",
+        "featured": false
     },
     {
         "label": "Castor Oil Fatty Acid",
@@ -420,7 +497,14 @@
         "applications": "Raw material for cosmetics, alkyd resins, coatings, liquid soaps, surfactants, textile finishing agents, and metalworking lubricants.",
         "images": [
             "images/product/castor-oil-fatty-acid_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "paints-coatings",
+            "personal-care"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Distilled Palm Fatty Acid",
@@ -456,7 +540,14 @@
         "applications": "Manufacturing of laundry soaps, cosmetic formulations, rubber processing additives, and raw material for chemical esters.",
         "images": [
             "images/product/distilled-palm-fatty-acid_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "rubber-plastics"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Fatty Acid Methyl Esters",
@@ -491,7 +582,14 @@
         "applications": "Biodiesel fuel blending, green solvent in agricultural formulations, lubricant additive, and plasticizer.",
         "images": [
             "images/product/fatty-acid-methyl-esters_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "rubber-plastics",
+            "paints-coatings"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Liquid Glycerin",
@@ -523,7 +621,14 @@
         "applications": "Moisturizer in cosmetics, sweetener and solvent in pharmaceuticals, humectant in food formulations, and raw material for alkyd resins.",
         "images": [
             "images/product/liquid-glycerin_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "agri-food"
+        ],
+        "sub_type": "Lecithin & Emulsifier",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Sodium Oleate",
@@ -555,7 +660,14 @@
         "applications": "Emulsifier in cosmetics, lubricating helper in metal drawing, waterproofing additive in concrete, and surfactant in soaps.",
         "images": [
             "images/product/sodium-oleate_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "rubber-plastics"
+        ],
+        "sub_type": "Stearate & Salt",
+        "physical_form": "Powder",
+        "featured": false
     },
     {
         "label": "Sodium Stearate",
@@ -586,7 +698,14 @@
         "applications": "Base for deodorant sticks, gelling agent for personal care products, lubricant in plastics, and emulsifier in cosmetics.",
         "images": [
             "images/product/sodium-stearate_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "rubber-plastics"
+        ],
+        "sub_type": "Stearate & Salt",
+        "physical_form": "Powder",
+        "featured": false
     },
     {
         "label": "Tall Oil Fatty Acid",
@@ -619,7 +738,14 @@
         "applications": "Manufacturing of alkyd resins for paints, dimerization to dimer acids, lubricant additives, and oilfield chemicals.",
         "images": [
             "images/product/tall-oil-fatty-acid_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "paints-coatings",
+            "rubber-plastics"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Terpineol Essential Oil",
@@ -653,7 +779,14 @@
         "applications": "Disinfectants and household cleaners, fragrance in soaps and perfumes, solvent in electronics ink, and chemical synthesis.",
         "images": [
             "images/product/terpineol-essential-oil_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "paints-coatings"
+        ],
+        "sub_type": "Essential Oil",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Zinc Ricinoleate",
@@ -684,7 +817,14 @@
         "applications": "Deodorants and personal care formulations, odor-control spray manufacturing, and chemical odor absorbers.",
         "images": [
             "images/product/zinc-ricinoleate_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "rubber-plastics"
+        ],
+        "sub_type": "Stearate & Salt",
+        "physical_form": "Powder",
+        "featured": false
     },
     {
         "label": "Zinc Stearate",
@@ -718,7 +858,15 @@
         "applications": "Internal lubricant in plastics (PE, PS, PVC), sanding sealers in wood coatings, release agent in rubber vulcanization, and dusting powder for rubber sheets.",
         "images": [
             "images/product/zinc-stearate_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "rubber-plastics",
+            "paints-coatings",
+            "personal-care"
+        ],
+        "sub_type": "Stearate & Salt",
+        "physical_form": "Powder",
+        "featured": false
     },
     {
         "label": "Gum Rosin (Colophony)",
@@ -737,7 +885,7 @@
         },
         "detailed_specs": {
             "Acid Value": "155-180 mg KOH/g",
-            "Softening Point": "70-80 °C",
+            "Softening Point": "70-80 \u00b0C",
             "Saponification Value": "160 min",
             "Ash Content": "Max 0.5%",
             "Volatile Matter": "Max 2.0%"
@@ -753,7 +901,15 @@
         "applications": "Adhesives, varnishes, printing inks, paper sizing, rubber compounding, soldering fluxes, and soap manufacturing.",
         "images": [
             "images/product/gum-rosin_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "paper-pulp",
+            "paints-coatings",
+            "rubber-plastics"
+        ],
+        "sub_type": "Sizing Agent",
+        "physical_form": "Solid",
+        "featured": false
     },
     {
         "label": "Pine Oil Industrial",
@@ -771,11 +927,11 @@
             "Odor": "Fresh, Piney"
         },
         "detailed_specs": {
-            "Specific Gravity at 27°C": "0.855-0.935",
-            "Refractive Index at 20°C": "1.470-1.490",
+            "Specific Gravity at 27\u00b0C": "0.855-0.935",
+            "Refractive Index at 20\u00b0C": "1.470-1.490",
             "Total Terpene Alcohols": "Min 85%",
             "Moisture": "Max 1.0%",
-            "Flash Point": ">102 °C"
+            "Flash Point": ">102 \u00b0C"
         },
         "description": "Pine Oil is a natural essential oil extracted from pine tree resins and needles, valued for its strong antimicrobial action, solvency, and fresh pine aroma.",
         "features": [
@@ -788,7 +944,14 @@
         "applications": "Household cleaners, industrial disinfectants, paint solvents, fragrance formulations, and textile processing.",
         "images": [
             "images/product/pine-oil-industrial_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "paints-coatings"
+        ],
+        "sub_type": "Essential Oil",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Ricinoleic Acid",
@@ -810,7 +973,7 @@
             "Hydroxyl Value": "150-165 mg KOH/g",
             "Iodine Value": "80-92 g I2/100g",
             "Saponification Value": "179-190 mg KOH/g",
-            "Specific Gravity at 25°C": "0.940-0.950"
+            "Specific Gravity at 25\u00b0C": "0.940-0.950"
         },
         "description": "Ricinoleic Acid (12-hydroxy-9-octadecenoic acid) is a unique hydroxy fatty acid derived from castor oil, valued for its dual hydroxyl and unsaturated functionality.",
         "features": [
@@ -823,7 +986,15 @@
         "applications": "Lubricant additives, cosmetic emulsions, zinc ricinoleate production, alkyd resins, and specialty chemical intermediates.",
         "images": [
             "images/product/ricinoleic-acid_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "paints-coatings",
+            "rubber-plastics"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Monobasic Fatty Acid",
@@ -857,7 +1028,15 @@
         "applications": "Soap manufacturing, animal feed formulations, biodiesel production, rubber compounding, and chemical intermediate synthesis.",
         "images": [
             "images/product/monobasic-fatty-acid_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "agri-food",
+            "rubber-plastics",
+            "paints-coatings"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Soya Fatty Acid (Soya Fatty Eco)",
@@ -878,7 +1057,7 @@
             "Acid Value": "195-205 mg KOH/g",
             "Iodine Value": "120-135 g I2/100g",
             "Saponification Value": "196-210 mg KOH/g",
-            "Titre Point": "15-24 °C",
+            "Titre Point": "15-24 \u00b0C",
             "Moisture": "Max 0.2%"
         },
         "description": "Soya Fatty Acid is a high-unsaturated fatty acid mixture derived from soybean oil, rich in linoleic and oleic acids, offering excellent drying and reactivity properties.",
@@ -892,7 +1071,15 @@
         "applications": "Alkyd resin production, paint and coating manufacturing, soap and detergent industry, lubricants, and textile finishing.",
         "images": [
             "images/product/soya-fatty-acid-eco_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "paints-coatings",
+            "rubber-plastics",
+            "personal-care"
+        ],
+        "sub_type": "Fatty Acid",
+        "physical_form": "Liquid",
+        "featured": true
     },
     {
         "label": "Turmeric Essential Oil",
@@ -928,7 +1115,14 @@
             "images/product/turmeric-essential-oil_0.jpeg",
             "images/product/turmeric-essential-oil_1.jpeg",
             "images/product/turmeric-essential-oil_2.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "agri-food"
+        ],
+        "sub_type": "Essential Oil",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Turmeric Extract",
@@ -961,7 +1155,14 @@
             "images/product/turmeric-extract_0.jpeg",
             "images/product/turmeric-extract_1.jpeg",
             "images/product/turmeric-extract_2.jpg"
-        ]
+        ],
+        "market_segments": [
+            "personal-care",
+            "agri-food"
+        ],
+        "sub_type": "Essential Oil",
+        "physical_form": "Powder",
+        "featured": false
     },
     {
         "label": "Turmeric Oleoresin",
@@ -993,7 +1194,14 @@
         "applications": "Food seasoning, snacks flavoring, pickles and sauces flavorings, and functional health supplements.",
         "images": [
             "images/product/turmeric-oleoresin_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "agri-food",
+            "personal-care"
+        ],
+        "sub_type": "Essential Oil",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Akd Wax Emulsion",
@@ -1028,7 +1236,13 @@
         "applications": "Sizing agent in writing paper, printing paper, photocopy paper, and paperboard manufacturing.",
         "images": [
             "images/product/akd-wax-emulsion_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "paper-pulp"
+        ],
+        "sub_type": "Sizing Agent",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Defoamer",
@@ -1059,7 +1273,14 @@
         "applications": "Foam control in pulp and paper mills, industrial wastewater treatment plants, textile dyeing, and chemical manufacturing.",
         "images": [
             "images/product/defoamer_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "paper-pulp",
+            "paints-coatings"
+        ],
+        "sub_type": "Sizing Agent",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "DSR Dry Strength Resin",
@@ -1094,7 +1315,13 @@
         "applications": "Strength additive in kraft paper, writing paper, duplex board, and corrugated paper manufacturing.",
         "images": [
             "images/product/dsr-dry-strength-resin_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "paper-pulp"
+        ],
+        "sub_type": "Sizing Agent",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Violet Ink",
@@ -1126,7 +1353,14 @@
         "applications": "Stencil marking of jute bags, stamp marking of wooden shipping crates, and industrial packaging identification.",
         "images": [
             "images/product/violet-ink_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "paper-pulp",
+            "paints-coatings"
+        ],
+        "sub_type": "Packaging Material",
+        "physical_form": "Liquid",
+        "featured": false
     },
     {
         "label": "Corrugated Packaging Boxes",
@@ -1162,7 +1396,13 @@
         "applications": "Packaging and shipping of fruits, vegetables, food products, industrial goods, and e-commerce shipments.",
         "images": [
             "images/product/corrugated-packaging-boxes_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "paper-pulp"
+        ],
+        "sub_type": "Packaging Material",
+        "physical_form": "Solid",
+        "featured": false
     },
     {
         "label": "Pulp Moulded Trays",
@@ -1195,6 +1435,12 @@
         "applications": "Packaging and transport of eggs, apples, melons, avocados, and protective packaging inserts for electronics.",
         "images": [
             "images/product/pulp-moulded-trays_0.jpeg"
-        ]
+        ],
+        "market_segments": [
+            "paper-pulp"
+        ],
+        "sub_type": "Packaging Material",
+        "physical_form": "Solid",
+        "featured": false
     }
 ]
