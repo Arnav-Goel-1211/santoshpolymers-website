@@ -179,35 +179,39 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Sticky Navbar Scroll Effect (IntersectionObserver)
+  // Sticky Navbar Scroll Effect (hysteresis thresholds)
+  // Engage compact state at scrollY > 80, disengage only when scrollY < 30.
+  // The ~50px gap absorbs trackpad momentum / rubber-band jitter at the boundary.
   const navBarElement = document.querySelector(".nav-bar");
-  const heroSentinel = document.querySelector(".hero-end-sentinel");
+  const ENGAGE_THRESHOLD = 80;
+  const DISENGAGE_THRESHOLD = 30;
 
-  if (navBarElement && heroSentinel) {
-    let navToggleTimeout = null;
-    const navObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (navToggleTimeout) clearTimeout(navToggleTimeout);
-        navToggleTimeout = setTimeout(() => {
-          navBarElement.classList.toggle("scrolled", !entry.isIntersecting);
-        }, 10);
-      },
-      { rootMargin: "-1px 0px 0px 0px", threshold: 0 }
-    );
-    navObserver.observe(heroSentinel);
+  if (navBarElement) {
+    let lastToggleTime = 0;
+    const DEBOUNCE_MS = 80;
+
+    window.addEventListener("scroll", function () {
+      const now = performance.now();
+      if (now - lastToggleTime < DEBOUNCE_MS) return;
+
+      const y = Math.max(0, window.scrollY);
+      const isScrolled = navBarElement.classList.contains("scrolled");
+
+      if (!isScrolled && y > ENGAGE_THRESHOLD) {
+        navBarElement.classList.add("scrolled");
+        lastToggleTime = now;
+      } else if (isScrolled && y < DISENGAGE_THRESHOLD) {
+        navBarElement.classList.remove("scrolled");
+        lastToggleTime = now;
+      }
+    }, { passive: true });
 
     // Set initial state on load (handles back/forward cache)
     requestAnimationFrame(() => {
-      if (heroSentinel.getBoundingClientRect().top <= 0) {
+      if (Math.max(0, window.scrollY) > ENGAGE_THRESHOLD) {
         navBarElement.classList.add("scrolled");
       }
     });
-  } else if (navBarElement) {
-    // Fallback if no sentinel exists
-    window.addEventListener("scroll", function() {
-      navBarElement.classList.toggle("scrolled", window.scrollY > 50);
-    }, { passive: true });
-    if (window.scrollY > 50) navBarElement.classList.add("scrolled");
   }
 
   // ==========================================
