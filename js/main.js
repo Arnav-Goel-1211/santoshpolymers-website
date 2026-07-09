@@ -316,6 +316,72 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+  // ==========================================
+  // 10. PRODUCT INQUIRY FORM SUBMISSION
+  // ==========================================
+  const productInquiryForm = document.getElementById("productInquiryForm");
+
+  if (productInquiryForm) {
+    productInquiryForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const submitBtn = productInquiryForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerHTML;
+
+      const nameField = document.getElementById("enq_name");
+      const emailField = document.getElementById("enq_email");
+      const phoneField = document.getElementById("enq_phone");
+
+      if (!nameField.value.trim()) {
+        showToast("Please enter your name.", "error");
+        nameField.focus();
+        return;
+      }
+
+      if (!emailField.value.trim() || !validateEmail(emailField.value)) {
+        showToast("Please enter a valid email address.", "error");
+        emailField.focus();
+        return;
+      }
+
+      if (!phoneField.value.trim()) {
+        showToast("Please enter your mobile number.", "error");
+        phoneField.focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+
+      const formDataObj = {};
+      new FormData(productInquiryForm).forEach((value, key) => {
+        formDataObj[key] = value;
+      });
+
+      fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formDataObj)
+      })
+      .then(async response => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+        const data = await response.json();
+        if (response.ok) {
+          showToast("Success! Your enquiry has been sent successfully.", "success");
+          productInquiryForm.reset();
+        } else {
+          showToast(data.error || "Failed to send enquiry. Please try again.", "error");
+        }
+      })
+      .catch(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+        showToast("An error occurred. Please check your network and try again.", "error");
+      });
+    });
+  }
+
   function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());

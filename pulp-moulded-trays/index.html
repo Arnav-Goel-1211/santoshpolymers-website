@@ -2,25 +2,8 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    
-    // Check localStorage for consent preference to set the default state early
-    var consentState = localStorage.getItem('cookie-consent') === 'granted' ? 'granted' : 'denied';
-    
-    gtag('consent', 'default', {
-      'ad_storage': consentState,
-      'ad_user_data': consentState,
-      'ad_personalization': consentState,
-      'analytics_storage': consentState
-    });
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHS7WCSSHB"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-XHS7WCSSHB');
-  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHS7WCSSHB" integrity="sha256-UFsfLMLltgEpQSdLJu6UrSKPHFGiiQarQhkmmu2K9nE=" crossorigin="anonymous"></script>
+  <script src="/js/gtm-init.js"></script>
   <meta charset="UTF-8">
   <title>Pulp Moulded Trays Manufacturers and Suppliers from Kurukshetra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -324,7 +307,7 @@
       <h2 style="font-size: 24px; margin-bottom: 8px; text-align: center; color: var(--primary-color);">Request Wholesale Quote</h2>
       <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 14px;">Fill in the formulation request or commercial wholesale enquiry for "Pulp Moulded Trays" below.</p>
       
-      <form id="productInquiryForm" onsubmit="submitProductEnquiry(event)">
+      <form id="productInquiryForm">
         <input type="hidden" id="enq_product_name" value="Pulp Moulded Trays">
         
         <div class="form-row">
@@ -445,45 +428,7 @@
   </div>
 </div>
 
-<script>
-// Lightbox Implementation
-document.addEventListener("DOMContentLoaded", function() {
-  const mainGallery = document.getElementById("pdpMainGallery");
-  const lightboxModal = document.getElementById("pdpLightboxModal");
-  const lightboxImg = document.getElementById("pdpLightboxImg");
-  const lightboxClose = document.getElementById("pdpLightboxClose");
-  
-  if (mainGallery && lightboxModal && lightboxImg) {
-    mainGallery.addEventListener("click", function() {
-      const activeImgSrc = document.getElementById("mainGalleryImg").getAttribute("src");
-      lightboxImg.setAttribute("src", activeImgSrc);
-      lightboxModal.classList.add("open");
-      lightboxModal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden"; // disable background scrolling
-    });
-    
-    function closeLightbox() {
-      lightboxModal.classList.remove("open");
-      lightboxModal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-    }
-    
-    if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
-    lightboxModal.addEventListener("click", function(e) {
-      if (e.target === lightboxModal || e.target.classList.contains("pdp-lightbox-content")) {
-        closeLightbox();
-      }
-    });
-    
-    // Close on escape key
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape" && lightboxModal.classList.contains("open")) {
-        closeLightbox();
-      }
-    });
-  }
-});
-</script>
+<script src="/js/lightbox.js"></script>
 
   </main>
 

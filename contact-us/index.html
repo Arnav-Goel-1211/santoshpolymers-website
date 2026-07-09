@@ -2,25 +2,8 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    
-    // Check localStorage for consent preference to set the default state early
-    var consentState = localStorage.getItem('cookie-consent') === 'granted' ? 'granted' : 'denied';
-    
-    gtag('consent', 'default', {
-      'ad_storage': consentState,
-      'ad_user_data': consentState,
-      'ad_personalization': consentState,
-      'analytics_storage': consentState
-    });
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHS7WCSSHB"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-XHS7WCSSHB');
-  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHS7WCSSHB" integrity="sha256-UFsfLMLltgEpQSdLJu6UrSKPHFGiiQarQhkmmu2K9nE=" crossorigin="anonymous"></script>
+  <script src="/js/gtm-init.js"></script>
   <meta charset="UTF-8">
   <title>Contact Us | Santosh Polymers Ladwa Kurukshetra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
