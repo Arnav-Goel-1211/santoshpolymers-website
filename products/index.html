@@ -2,42 +2,57 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHS7WCSSHB" integrity="sha256-UFsfLMLltgEpQSdLJu6UrSKPHFGiiQarQhkmmu2K9nE=" crossorigin="anonymous"></script>
-  <script src="/js/gtm-init.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    
+    // Check localStorage for consent preference to set the default state early
+    var consentState = localStorage.getItem('cookie-consent') === 'granted' ? 'granted' : 'denied';
+    
+    gtag('consent', 'default', {
+      'ad_storage': consentState,
+      'ad_user_data': consentState,
+      'ad_personalization': consentState,
+      'analytics_storage': consentState
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHS7WCSSHB"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-XHS7WCSSHB');
+  </script>
   <meta charset="UTF-8">
   <title>Products Catalog | Oleochemicals, Paper Sizing, Packaging Trays</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Browse our extensive range of high-quality oleochemicals, distilled fatty acids, paper chemicals, essential oils, and packaging products manufactured in Haryana, India.">
   <meta name="keywords" content="oleic fatty acid, distilled palm fatty acid, akd wax emulsion, corrugated boxes, pulp egg trays, soya lecithin">
   <meta name="author" content="Santosh">
+  <link rel="canonical" href="https://santoshpolymers.com/products/">
   
   <link rel="icon" type="image/png" href="/images/favicon.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/css/style.css">
   
-  <script type="application/ld+json">
+    <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Santosh",
-    "url": "https://santoshpolymers.com",
-    "logo": "https://santoshpolymers.com/images/logo_3.webp",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91-9215660695",
-      "contactType": "sales",
-      "email": "santoshpolymers.info@gmail.com"
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://santoshpolymers.com"
     },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Vill. Gharaula, Ladwa",
-      "addressLocality": "Kurukshetra",
-      "addressRegion": "Haryana",
-      "postalCode": "136132",
-      "addressCountry": "IN"
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Products",
+      "item": "https://santoshpolymers.com/products"
     }
-  }
+  ]
+}
   </script>
 </head>
 <body>
@@ -70,9 +85,9 @@
       </ul>
       
       <div class="nav-contacts">
-        <a href="mailto:santoshpolymers.info@gmail.com" class="nav-contact-item" title="Email santoshpolymers.info@gmail.com">
+        <a href="mailto:info@santoshpolymersz.com" class="nav-contact-item" title="Email info@santoshpolymersz.com">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span class="nav-contact-text">santoshpolymers.info@gmail.com</span>
+          <span class="nav-contact-text">info@santoshpolymersz.com</span>
         </a>
         <a href="tel:+919215660695" class="nav-contact-item" title="Call +91 92156 60695">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -118,14 +133,15 @@
     
     <div class="mobile-contact-info" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0, 0, 0, 0.08);">
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><a href="tel:+919215660695">+91 92156 60695</a> | <a href="tel:+919254360695">+91 92543 60695</a></p>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><a href="mailto:santoshpolymers.info@gmail.com">santoshpolymers.info@gmail.com</a></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><a href="mailto:info@santoshpolymersz.com">info@santoshpolymersz.com</a></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><a href="mailto:ankur.goel@santoshpolymers.com">ankur.goel@santoshpolymers.com</a></p>
     </div>
   </div>
 
   <!-- Page Content -->
   <main>
     <!-- Unified Inner Page Banner -->
-<section class="page-banner unified-banner" style="background-image: linear-gradient(to right, rgba(3, 40, 15, 0.92) 0%, rgba(3, 40, 15, 0.78) 40%, rgba(3, 40, 15, 0.35) 100%), url('/images/slider/3.webp');">
+<section class="page-banner unified-banner" style="background-image: linear-gradient(135deg, rgba(3, 82, 23, 0.96) 0%, rgba(12, 53, 21, 0.92) 100%), url('/images/slider/3.webp');">
   <div class="container">
     <div class="reveal">
       <div class="breadcrumbs">
@@ -139,7 +155,6 @@
     </div>
   </div>
 </section>
-<div class="hero-end-sentinel"></div>
 
 
 <!-- Featured Products Showcase -->
@@ -154,7 +169,7 @@
       
       <div class="featured-card">
         <div class="featured-image">
-          <img src="images/product/distilled-soya-fatty-acid-oil_0.jpeg" alt="Distilled Soya Fatty Acid Oil" loading="lazy">
+          <img src="images/product/distilled-soya-fatty-acid-oil_0.jpeg" alt="Distilled Soya Fatty Acid Oil manufacturer India - Santosh Polymers" loading="lazy">
         </div>
         <div class="featured-info">
           <div>
@@ -170,7 +185,7 @@
         
       <div class="featured-card">
         <div class="featured-image">
-          <img src="images/product/oleic-fatty-acid_0.jpeg" alt="Oleic Fatty Acid" loading="lazy">
+          <img src="images/product/oleic-fatty-acid_0.jpeg" alt="Oleic Fatty Acid manufacturer India - Santosh Polymers" loading="lazy">
         </div>
         <div class="featured-info">
           <div>
@@ -186,7 +201,7 @@
         
       <div class="featured-card">
         <div class="featured-image">
-          <img src="images/product/poultry-feed-oil_0.jpeg" alt="Poultry Feed Oil" loading="lazy">
+          <img src="images/product/poultry-feed-oil_0.jpeg" alt="Poultry Feed Oil manufacturer India - Santosh Polymers" loading="lazy">
         </div>
         <div class="featured-info">
           <div>
@@ -202,7 +217,7 @@
         
       <div class="featured-card">
         <div class="featured-image">
-          <img src="images/product/soya-fatty-acid-eco_0.jpeg" alt="Soya Fatty Acid (Soya Fatty Eco)" loading="lazy">
+          <img src="images/product/soya-fatty-acid-eco_0.jpeg" alt="Soya Fatty Acid (Soya Fatty Eco) manufacturer India - Santosh Polymers" loading="lazy">
         </div>
         <div class="featured-info">
           <div>
@@ -278,7 +293,7 @@
       
       <div class="product-card" data-segments="paints-coatings,rubber-plastics" data-form="Oil">
         <div class="product-image">
-          <img src="images/product/distilled-soya-fatty-acid-oil_0.jpeg" alt="Distilled Soya Fatty Acid Oil" loading="lazy">
+          <img src="images/product/distilled-soya-fatty-acid-oil_0.jpeg" alt="Distilled Soya Fatty Acid Oil supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -298,7 +313,7 @@
     
       <div class="product-card" data-segments="personal-care,paints-coatings" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/distilled-rice-fatty-acid_0.jpeg" alt="Distilled Rice Fatty Acid" loading="lazy">
+          <img src="images/product/distilled-rice-fatty-acid_0.jpeg" alt="Distilled Rice Fatty Acid supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -318,7 +333,7 @@
     
       <div class="product-card" data-segments="agri-food,paints-coatings" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/soya-acid-oil_0.jpeg" alt="Soya Acid Oil" loading="lazy">
+          <img src="images/product/soya-acid-oil_0.jpeg" alt="Soya Acid Oil supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -338,7 +353,7 @@
     
       <div class="product-card" data-segments="personal-care,paints-coatings,rubber-plastics" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/oleic-fatty-acid_0.jpeg" alt="Oleic Fatty Acid" loading="lazy">
+          <img src="images/product/oleic-fatty-acid_0.jpeg" alt="Oleic Fatty Acid supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -358,7 +373,7 @@
     
       <div class="product-card" data-segments="agri-food" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/poultry-feed-oil_0.jpeg" alt="Poultry Feed Oil" loading="lazy">
+          <img src="images/product/poultry-feed-oil_0.jpeg" alt="Poultry Feed Oil supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -378,7 +393,7 @@
     
       <div class="product-card" data-segments="agri-food" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/food-additive-sorbitan-monooleate_0.jpeg" alt="Food Additive Sorbitan Monooleate" loading="lazy">
+          <img src="images/product/food-additive-sorbitan-monooleate_0.jpeg" alt="Food Additive Sorbitan Monooleate supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -398,7 +413,7 @@
     
       <div class="product-card" data-segments="personal-care" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/peg-400-monooleate_0.jpeg" alt="PEG-400 Monooleate" loading="lazy">
+          <img src="images/product/peg-400-monooleate_0.jpeg" alt="PEG-400 Monooleate supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -418,7 +433,7 @@
     
       <div class="product-card" data-segments="personal-care,agri-food,paints-coatings" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/rice-bran-lecithin_0.jpeg" alt="Rice Bran Lecithin" loading="lazy">
+          <img src="images/product/rice-bran-lecithin_0.jpeg" alt="Rice Bran Lecithin supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -438,7 +453,7 @@
     
       <div class="product-card" data-segments="personal-care,agri-food,paints-coatings" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/liquid-soya-lecithin_0.jpeg" alt="Liquid Soya Lecithin" loading="lazy">
+          <img src="images/product/liquid-soya-lecithin_0.jpeg" alt="Liquid Soya Lecithin supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -458,7 +473,7 @@
     
       <div class="product-card" data-segments="agri-food" data-form="Powder">
         <div class="product-image">
-          <img src="images/product/bypass-fat-84_0.jpeg" alt="Bypass Fat 84%" loading="lazy">
+          <img src="images/product/bypass-fat-84_0.jpeg" alt="Bypass Fat 84% supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -478,7 +493,7 @@
     
       <div class="product-card" data-segments="rubber-plastics,paints-coatings,personal-care" data-form="Powder">
         <div class="product-image">
-          <img src="images/product/calcium-stearate-chemical_0.jpeg" alt="Calcium Stearate Chemical" loading="lazy">
+          <img src="images/product/calcium-stearate-chemical_0.jpeg" alt="Calcium Stearate Chemical supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -498,7 +513,7 @@
     
       <div class="product-card" data-segments="paints-coatings,personal-care" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/castor-oil-fatty-acid_0.jpeg" alt="Castor Oil Fatty Acid" loading="lazy">
+          <img src="images/product/castor-oil-fatty-acid_0.jpeg" alt="Castor Oil Fatty Acid supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -518,7 +533,7 @@
     
       <div class="product-card" data-segments="personal-care,rubber-plastics" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/distilled-palm-fatty-acid_0.jpeg" alt="Distilled Palm Fatty Acid" loading="lazy">
+          <img src="images/product/distilled-palm-fatty-acid_0.jpeg" alt="Distilled Palm Fatty Acid supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -538,7 +553,7 @@
     
       <div class="product-card" data-segments="rubber-plastics,paints-coatings" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/fatty-acid-methyl-esters_0.jpeg" alt="Fatty Acid Methyl Esters" loading="lazy">
+          <img src="images/product/fatty-acid-methyl-esters_0.jpeg" alt="Fatty Acid Methyl Esters supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -558,7 +573,7 @@
     
       <div class="product-card" data-segments="personal-care,agri-food" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/liquid-glycerin_0.jpeg" alt="Liquid Glycerin" loading="lazy">
+          <img src="images/product/liquid-glycerin_0.jpeg" alt="Liquid Glycerin supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -578,7 +593,7 @@
     
       <div class="product-card" data-segments="personal-care,rubber-plastics" data-form="Powder">
         <div class="product-image">
-          <img src="images/product/sodium-oleate_0.jpeg" alt="Sodium Oleate" loading="lazy">
+          <img src="images/product/sodium-oleate_0.jpeg" alt="Sodium Oleate supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -598,7 +613,7 @@
     
       <div class="product-card" data-segments="personal-care,rubber-plastics" data-form="Powder">
         <div class="product-image">
-          <img src="images/product/sodium-stearate_0.jpeg" alt="Sodium Stearate" loading="lazy">
+          <img src="images/product/sodium-stearate_0.jpeg" alt="Sodium Stearate supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -618,7 +633,7 @@
     
       <div class="product-card" data-segments="paints-coatings,rubber-plastics" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/tall-oil-fatty-acid_0.jpeg" alt="Tall Oil Fatty Acid" loading="lazy">
+          <img src="images/product/tall-oil-fatty-acid_0.jpeg" alt="Tall Oil Fatty Acid supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -638,7 +653,7 @@
     
       <div class="product-card" data-segments="personal-care,paints-coatings" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/terpineol-essential-oil_0.jpeg" alt="Terpineol Essential Oil" loading="lazy">
+          <img src="images/product/terpineol-essential-oil_0.jpeg" alt="Terpineol Essential Oil supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -658,7 +673,7 @@
     
       <div class="product-card" data-segments="personal-care,rubber-plastics" data-form="Powder">
         <div class="product-image">
-          <img src="images/product/zinc-ricinoleate_0.jpeg" alt="Zinc Ricinoleate" loading="lazy">
+          <img src="images/product/zinc-ricinoleate_0.jpeg" alt="Zinc Ricinoleate supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -678,7 +693,7 @@
     
       <div class="product-card" data-segments="rubber-plastics,paints-coatings,personal-care" data-form="Powder">
         <div class="product-image">
-          <img src="images/product/zinc-stearate_0.jpeg" alt="Zinc Stearate" loading="lazy">
+          <img src="images/product/zinc-stearate_0.jpeg" alt="Zinc Stearate supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -698,7 +713,7 @@
     
       <div class="product-card" data-segments="paper-pulp,paints-coatings,rubber-plastics" data-form="Solid">
         <div class="product-image">
-          <img src="images/product/gum-rosin_0.jpeg" alt="Gum Rosin (Colophony)" loading="lazy">
+          <img src="images/product/gum-rosin_0.jpeg" alt="Gum Rosin (Colophony) supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -718,7 +733,7 @@
     
       <div class="product-card" data-segments="personal-care,paints-coatings" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/pine-oil-industrial_0.jpeg" alt="Pine Oil Industrial" loading="lazy">
+          <img src="images/product/pine-oil-industrial_0.jpeg" alt="Pine Oil Industrial supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -738,7 +753,7 @@
     
       <div class="product-card" data-segments="personal-care,paints-coatings,rubber-plastics" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/ricinoleic-acid_0.jpeg" alt="Ricinoleic Acid" loading="lazy">
+          <img src="images/product/ricinoleic-acid_0.jpeg" alt="Ricinoleic Acid supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -758,7 +773,7 @@
     
       <div class="product-card" data-segments="agri-food,rubber-plastics,paints-coatings" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/monobasic-fatty-acid_0.jpeg" alt="Monobasic Fatty Acid" loading="lazy">
+          <img src="images/product/monobasic-fatty-acid_0.jpeg" alt="Monobasic Fatty Acid supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -778,7 +793,7 @@
     
       <div class="product-card" data-segments="paints-coatings,rubber-plastics,personal-care" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/soya-fatty-acid-eco_0.jpeg" alt="Soya Fatty Acid (Soya Fatty Eco)" loading="lazy">
+          <img src="images/product/soya-fatty-acid-eco_0.jpeg" alt="Soya Fatty Acid (Soya Fatty Eco) supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -798,7 +813,7 @@
     
       <div class="product-card" data-segments="personal-care,agri-food" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/turmeric-essential-oil_0.jpeg" alt="Turmeric Essential Oil" loading="lazy">
+          <img src="images/product/turmeric-essential-oil_0.jpeg" alt="Turmeric Essential Oil supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -818,7 +833,7 @@
     
       <div class="product-card" data-segments="personal-care,agri-food" data-form="Powder">
         <div class="product-image">
-          <img src="images/product/turmeric-extract_0.jpeg" alt="Turmeric Extract" loading="lazy">
+          <img src="images/product/turmeric-extract_0.jpeg" alt="Turmeric Extract supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -838,7 +853,7 @@
     
       <div class="product-card" data-segments="agri-food,personal-care" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/turmeric-oleoresin_0.jpeg" alt="Turmeric Oleoresin" loading="lazy">
+          <img src="images/product/turmeric-oleoresin_0.jpeg" alt="Turmeric Oleoresin supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -858,7 +873,7 @@
     
       <div class="product-card" data-segments="paper-pulp" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/akd-wax-emulsion_0.jpeg" alt="Akd Wax Emulsion" loading="lazy">
+          <img src="images/product/akd-wax-emulsion_0.jpeg" alt="Akd Wax Emulsion supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -878,7 +893,7 @@
     
       <div class="product-card" data-segments="paper-pulp,paints-coatings" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/defoamer_0.jpeg" alt="Defoamer" loading="lazy">
+          <img src="images/product/defoamer_0.jpeg" alt="Defoamer supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -898,7 +913,7 @@
     
       <div class="product-card" data-segments="paper-pulp" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/dsr-dry-strength-resin_0.jpeg" alt="DSR Dry Strength Resin" loading="lazy">
+          <img src="images/product/dsr-dry-strength-resin_0.jpeg" alt="DSR Dry Strength Resin supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -918,7 +933,7 @@
     
       <div class="product-card" data-segments="paper-pulp,paints-coatings" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/violet-ink_0.jpeg" alt="Violet Ink" loading="lazy">
+          <img src="images/product/violet-ink_0.jpeg" alt="Violet Ink supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -938,7 +953,7 @@
     
       <div class="product-card" data-segments="paper-pulp" data-form="Solid">
         <div class="product-image">
-          <img src="images/product/corrugated-packaging-boxes_0.jpeg" alt="Corrugated Packaging Boxes" loading="lazy">
+          <img src="images/product/corrugated-packaging-boxes_0.jpeg" alt="Corrugated Packaging Boxes supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -958,7 +973,7 @@
     
       <div class="product-card" data-segments="paper-pulp" data-form="Solid">
         <div class="product-image">
-          <img src="images/product/pulp-moulded-trays_0.jpeg" alt="Pulp Moulded Trays" loading="lazy">
+          <img src="images/product/pulp-moulded-trays_0.jpeg" alt="Pulp Moulded Trays supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -990,7 +1005,182 @@
 </section>
 
 <!-- Filter Script -->
-<script src="/js/products-filter.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const segmentBtns = document.querySelectorAll(".pill-btn");
+  const formBtns = document.querySelectorAll(".form-pill");
+  const searchInput = document.getElementById("catalogSearch");
+  const clearSearchBtn = document.getElementById("clearSearch");
+  const moreFiltersToggle = document.getElementById("moreFiltersToggle");
+  const secondaryFiltersPanel = document.getElementById("secondaryFiltersPanel");
+  const productCards = document.querySelectorAll("#productsCatalogGrid .product-card");
+  const productsGrid = document.getElementById("productsCatalogGrid");
+  const noResultsAlert = document.getElementById("noResultsAlert");
+  const resetFiltersButton = document.getElementById("resetFiltersButton");
+  const resetAllFiltersBtn = document.getElementById("resetAllFiltersBtn");
+
+  let activeSegment = "all";
+  let activeForm = "all";
+  let searchQuery = "";
+
+  // 1. More Filters Expand / Collapse
+  if (moreFiltersToggle && secondaryFiltersPanel) {
+    moreFiltersToggle.addEventListener("click", function() {
+      const isExpanded = this.getAttribute("aria-expanded") === "true";
+      this.setAttribute("aria-expanded", !isExpanded);
+      this.classList.toggle("active");
+      secondaryFiltersPanel.classList.toggle("open");
+    });
+  }
+
+  // 2. Filter Application Function with Fade Transition
+  function applyFilters() {
+    // Add filtering transition class (causes grid to fade out slightly)
+    productsGrid.classList.add("filtering-transition");
+
+    setTimeout(() => {
+      let visibleCount = 0;
+      
+      productCards.forEach(card => {
+        const segmentsAttr = card.getAttribute("data-segments") || "";
+        const productSegments = segmentsAttr.split(",").map(s => s.trim());
+        const productForm = card.getAttribute("data-form") || "N/A";
+        const productName = card.querySelector(".product-title").textContent.toLowerCase();
+        const productDesc = card.querySelector(".product-desc").textContent.toLowerCase();
+        const subTypeTag = card.querySelector(".tag-subtype")?.textContent.toLowerCase() || "";
+
+        // Checks
+        const matchesSegment = activeSegment === "all" || productSegments.includes(activeSegment);
+        const matchesForm = activeForm === "all" || productForm.toLowerCase() === activeForm.toLowerCase();
+        
+        const q = searchQuery.toLowerCase().trim();
+        const matchesSearch = q === "" || 
+                              productName.includes(q) || 
+                              productDesc.includes(q) ||
+                              subTypeTag.includes(q);
+
+        if (matchesSegment && matchesForm && matchesSearch) {
+          card.style.display = "flex";
+          // Add slight delay for reflow reveal
+          setTimeout(() => { card.style.opacity = "1"; card.style.transform = "translateY(0)"; }, 20);
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+          card.style.opacity = "0";
+          card.style.transform = "translateY(10px)";
+        }
+      });
+
+      // No Results Alert Toggle
+      if (visibleCount === 0) {
+        noResultsAlert.style.display = "block";
+        setTimeout(() => noResultsAlert.style.opacity = "1", 20);
+      } else {
+        noResultsAlert.style.display = "none";
+        noResultsAlert.style.opacity = "0";
+      }
+
+      // Show/hide main clear button
+      const hasActiveFilters = activeSegment !== "all" || activeForm !== "all" || searchQuery !== "";
+      if (resetAllFiltersBtn) {
+        resetAllFiltersBtn.style.display = hasActiveFilters ? "inline-flex" : "none";
+      }
+
+      // Remove transition class to fade back in
+      productsGrid.classList.remove("filtering-transition");
+    }, 200);
+  }
+
+  // 3. Segment Pill Click Handler
+  segmentBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+      segmentBtns.forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+      activeSegment = this.getAttribute("data-segment");
+      applyFilters();
+    });
+  });
+
+  // 4. Form Pill Click Handler
+  formBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+      formBtns.forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+      activeForm = this.getAttribute("data-form");
+      applyFilters();
+    });
+  });
+
+  // 5. Search Input Handler
+  if (searchInput) {
+    searchInput.addEventListener("input", function() {
+      searchQuery = this.value;
+      if (clearSearchBtn) {
+        clearSearchBtn.style.display = searchQuery ? "flex" : "none";
+      }
+      applyFilters();
+    });
+  }
+
+  // 6. Clear Search Button
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener("click", function() {
+      searchInput.value = "";
+      searchQuery = "";
+      this.style.display = "none";
+      searchInput.focus();
+      applyFilters();
+    });
+  }
+
+  // 7. Reset Filters Button
+  function resetAll() {
+    activeSegment = "all";
+    activeForm = "all";
+    searchQuery = "";
+    
+    segmentBtns.forEach(b => b.classList.remove("active"));
+    segmentBtns[0].classList.add("active");
+    
+    formBtns.forEach(b => b.classList.remove("active"));
+    formBtns[0].classList.add("active");
+
+    if (searchInput) {
+      searchInput.value = "";
+      if (clearSearchBtn) clearSearchBtn.style.display = "none";
+    }
+
+    applyFilters();
+  }
+
+  if (resetFiltersButton) resetFiltersButton.addEventListener("click", resetAll);
+  if (resetAllFiltersBtn) resetAllFiltersBtn.addEventListener("click", resetAll);
+
+  // 8. URL Hash Handler (Routing to specific segment, e.g., /products#paper-pulp)
+  function handleUrlHash() {
+    const hash = window.location.hash;
+    if (hash) {
+      const targetSegment = hash.substring(1);
+      const targetBtn = document.querySelector(`.pill-btn[data-segment="${targetSegment}"]`);
+      if (targetBtn) {
+        segmentBtns.forEach(b => b.classList.remove("active"));
+        targetBtn.classList.add("active");
+        activeSegment = targetSegment;
+        
+        // Scroll target pill into view
+        targetBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        applyFilters();
+      }
+    }
+  }
+
+  // Run URL hash parsing on load
+  handleUrlHash();
+  
+  // Listen for hash changes
+  window.addEventListener("hashchange", handleUrlHash);
+});
+</script>
 
   </main>
 
@@ -1008,7 +1198,7 @@
         </div>
         <p>One of the leading producers of high-quality Oleochemicals, Distilled Fatty Acids, Paper Chemicals, Herbal Extracts, and Eco-friendly Packaging solutions in India. Dedicated to quality and service since 2012.</p>
         <div class="footer-social">
-          <a href="mailto:santoshpolymers.info@gmail.com" aria-label="Email" title="Email Us">
+          <a href="mailto:info@santoshpolymersz.com,ankur.goel@santoshpolymers.com" aria-label="Email" title="Email Us">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           </a>
           <a href="https://wa.me/919215660695" target="_blank" aria-label="WhatsApp" title="Chat on WhatsApp">
@@ -1065,7 +1255,8 @@
         </p>
         <p style="font-size: 13px;">
           <strong>Phone:</strong> +91 92156 60695 | +91 92543 60695<br>
-          <strong>Email:</strong> santoshpolymers.info@gmail.com
+          <strong>Email:</strong> <a href="mailto:info@santoshpolymersz.com" style="color: inherit; text-decoration: none;">info@santoshpolymersz.com</a><br>
+          <strong style="visibility: hidden;">Email:</strong> <a href="mailto:ankur.goel@santoshpolymers.com" style="color: inherit; text-decoration: none;">ankur.goel@santoshpolymers.com</a>
         </p>
       </div>
     </div>

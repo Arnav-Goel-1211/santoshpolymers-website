@@ -2,42 +2,57 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHS7WCSSHB" integrity="sha256-UFsfLMLltgEpQSdLJu6UrSKPHFGiiQarQhkmmu2K9nE=" crossorigin="anonymous"></script>
-  <script src="/js/gtm-init.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    
+    // Check localStorage for consent preference to set the default state early
+    var consentState = localStorage.getItem('cookie-consent') === 'granted' ? 'granted' : 'denied';
+    
+    gtag('consent', 'default', {
+      'ad_storage': consentState,
+      'ad_user_data': consentState,
+      'ad_personalization': consentState,
+      'analytics_storage': consentState
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHS7WCSSHB"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-XHS7WCSSHB');
+  </script>
   <meta charset="UTF-8">
   <title>Industries We Serve | Santosh Polymers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="We supply specialty chemicals, distilled fatty acids, and eco-friendly packaging boxes to the Paint, Biodiesel fuel, Pharmaceutical, Petrochemical, and Plastic & Resin industries.">
   <meta name="keywords" content="paint industry, biodiesel, pharmaceutical, petrochemical, resins, packaging">
   <meta name="author" content="Santosh">
+  <link rel="canonical" href="https://santoshpolymers.com/industries/">
   
   <link rel="icon" type="image/png" href="/images/favicon.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/css/style.css">
   
-  <script type="application/ld+json">
+    <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Santosh",
-    "url": "https://santoshpolymers.com",
-    "logo": "https://santoshpolymers.com/images/logo_3.webp",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91-9215660695",
-      "contactType": "sales",
-      "email": "santoshpolymers.info@gmail.com"
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://santoshpolymers.com"
     },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Vill. Gharaula, Ladwa",
-      "addressLocality": "Kurukshetra",
-      "addressRegion": "Haryana",
-      "postalCode": "136132",
-      "addressCountry": "IN"
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Industries We Serve",
+      "item": "https://santoshpolymers.com/industries/"
     }
-  }
+  ]
+}
   </script>
 </head>
 <body>
@@ -70,9 +85,9 @@
       </ul>
       
       <div class="nav-contacts">
-        <a href="mailto:santoshpolymers.info@gmail.com" class="nav-contact-item" title="Email santoshpolymers.info@gmail.com">
+        <a href="mailto:info@santoshpolymersz.com" class="nav-contact-item" title="Email info@santoshpolymersz.com">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span class="nav-contact-text">santoshpolymers.info@gmail.com</span>
+          <span class="nav-contact-text">info@santoshpolymersz.com</span>
         </a>
         <a href="tel:+919215660695" class="nav-contact-item" title="Call +91 92156 60695">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -118,14 +133,15 @@
     
     <div class="mobile-contact-info" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0, 0, 0, 0.08);">
       <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><a href="tel:+919215660695">+91 92156 60695</a> | <a href="tel:+919254360695">+91 92543 60695</a></p>
-      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><a href="mailto:santoshpolymers.info@gmail.com">santoshpolymers.info@gmail.com</a></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><a href="mailto:info@santoshpolymersz.com">info@santoshpolymersz.com</a></p>
+      <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><a href="mailto:ankur.goel@santoshpolymers.com">ankur.goel@santoshpolymers.com</a></p>
     </div>
   </div>
 
   <!-- Page Content -->
   <main>
     <!-- Unified Inner Page Banner -->
-<section class="page-banner unified-banner" style="background-image: linear-gradient(to right, rgba(3, 40, 15, 0.92) 0%, rgba(3, 40, 15, 0.78) 40%, rgba(3, 40, 15, 0.35) 100%), url('/images/slider/3.webp');">
+<section class="page-banner unified-banner" style="background-image: linear-gradient(135deg, rgba(3, 82, 23, 0.96) 0%, rgba(12, 53, 21, 0.92) 100%), url('/images/slider/3.webp');">
   <div class="container">
     <div class="reveal">
       <div class="breadcrumbs">
@@ -143,7 +159,6 @@
     </div>
   </div>
 </section>
-<div class="hero-end-sentinel"></div>
 
 
 <!-- Industry Picker Section -->
@@ -318,7 +333,7 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       <span>Chat on WhatsApp</span>
     </a>
-    <a href="mailto:santoshpolymers.info@gmail.com" class="sticky-cta-btn email" aria-label="Email">
+    <a href="mailto:info@santoshpolymersz.com,ankur.goel@santoshpolymers.com" class="sticky-cta-btn email" aria-label="Email">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
       <span>Email Us</span>
     </a>
@@ -328,7 +343,17 @@
   </button>
 </div>
 
-<script src="/js/sticky-cta.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('stickyCtaToggle');
+    var body = document.getElementById('stickyCtaBody');
+    if (toggle && body) {
+      toggle.addEventListener('click', function () {
+        body.classList.toggle('hidden');
+      });
+    }
+  });
+</script>
 
   </main>
 
@@ -346,7 +371,7 @@
         </div>
         <p>One of the leading producers of high-quality Oleochemicals, Distilled Fatty Acids, Paper Chemicals, Herbal Extracts, and Eco-friendly Packaging solutions in India. Dedicated to quality and service since 2012.</p>
         <div class="footer-social">
-          <a href="mailto:santoshpolymers.info@gmail.com" aria-label="Email" title="Email Us">
+          <a href="mailto:info@santoshpolymersz.com,ankur.goel@santoshpolymers.com" aria-label="Email" title="Email Us">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           </a>
           <a href="https://wa.me/919215660695" target="_blank" aria-label="WhatsApp" title="Chat on WhatsApp">
@@ -403,7 +428,8 @@
         </p>
         <p style="font-size: 13px;">
           <strong>Phone:</strong> +91 92156 60695 | +91 92543 60695<br>
-          <strong>Email:</strong> santoshpolymers.info@gmail.com
+          <strong>Email:</strong> <a href="mailto:info@santoshpolymersz.com" style="color: inherit; text-decoration: none;">info@santoshpolymersz.com</a><br>
+          <strong style="visibility: hidden;">Email:</strong> <a href="mailto:ankur.goel@santoshpolymers.com" style="color: inherit; text-decoration: none;">ankur.goel@santoshpolymers.com</a>
         </p>
       </div>
     </div>

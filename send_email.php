@@ -131,7 +131,7 @@ if (!empty($safeProductName)) {
 
 $resendData = [
     "from" => "onboarding@resend.dev",
-    "to" => "santoshpolymers.info@gmail.com",
+    "to" => ["info@santoshpolymersz.com", "ankur.goel@santoshpolymers.com"],
     "subject" => $subject,
     "html" => $htmlContent
 ];

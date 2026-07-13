@@ -67,12 +67,50 @@ def clean_weblink_boilerplate(text, product_name):
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
+default_org_schema = """  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Santosh Polymers",
+    "url": "https://santoshpolymers.com",
+    "logo": "https://santoshpolymers.com/images/logo_3.webp",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-9215660695",
+      "contactType": "sales",
+      "email": "info@santoshpolymersz.com",
+      "availableLanguage": ["en", "hi"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vill. Gharaula, Ladwa",
+      "addressLocality": "Kurukshetra",
+      "addressRegion": "Haryana",
+      "postalCode": "136132",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      "https://www.indiamart.com/santosh-polymers-ladwa/",
+      "https://wa.me/919215660695"
+    ]
+  }
+  </script>"""
+
 # Helper to render base layout
-def render_page(content, title, desc, keywords, active_menu="home"):
+def render_page(content, title, desc, keywords, active_menu="home", canonical_url="", schema_script=""):
     page = layout_tpl
     page = page.replace("{{title}}", title)
     page = page.replace("{{meta_description}}", desc)
     page = page.replace("{{meta_keywords}}", keywords)
+    
+    if not canonical_url:
+        canonical_url = "https://santoshpolymers.com/"
+    page = page.replace("{{canonical_url}}", canonical_url)
+    
+    if not schema_script:
+        schema_script = default_org_schema
+    page = page.replace("{{schema_script}}", schema_script)
+    
     page = page.replace("{{content}}", content)
     
     # Active menu classes
@@ -100,7 +138,7 @@ def get_cat_slug(cat):
 # ==========================================
 # 1. BUILD INDIVIDUAL PRODUCT PAGES
 # ==========================================
-print("Generating 30 product detail pages...")
+print(f"Generating {len(products)} product detail pages...")
 for p in products:
     p_name = p["product_name"]
     category = p["category"]
@@ -111,13 +149,16 @@ for p in products:
     img_list = p["images"]
     main_image = "/" + img_list[0] if img_list else "/images/product/default.webp"
     
+    # Dynamic image alt text
+    main_image_alt = f"High purity {p_name} manufactured by Santosh Polymers in India for industrial use"
+    
     # Thumbnails formatting
     has_thumbs = len(img_list) > 1
     thumbs_html = ""
     if has_thumbs:
         for idx, img in enumerate(img_list):
             active_class = "active" if idx == 0 else ""
-            thumbs_html += f'<div class="gallery-thumb {active_class}" data-large="/{img}"><img src="/{img}" alt="{p_name} Thumb"></div>'
+            thumbs_html += f'<div class="gallery-thumb {active_class}" data-large="/{img}"><img src="/{img}" alt="High quality {p_name} thumbnail view {idx+1} - Santosh Polymers" loading="lazy"></div>'
             
     # Build Unified Spec Card
     unified_fields = [
@@ -237,7 +278,7 @@ for p in products:
         related_products_html += f'''
       <div class="related-product-card">
         <div class="related-product-img">
-          <img src="/{r_img}" alt="{r_name}" loading="lazy">
+          <img src="/{r_img}" alt="{r_name} manufacturer India - Santosh Polymers" loading="lazy">
         </div>
         <div class="related-product-info">
           <h4>{r_name}</h4>
@@ -253,7 +294,7 @@ for p in products:
     if len(first_sentence) > 160:
         first_sentence = first_sentence[:157] + "..."
         
-    pdp_breadcrumbs = [("Products", "/products"), (category, "")]
+    pdp_breadcrumbs = [("Products", "/products"), (category, f"/products#{get_cat_slug(category)}")]
     # Note: main_image is already absolute-path structured like '/images/product/xxx'
     # For css url('...'), it is fine to keep the leading slash
     pdp_banner_html = render_banner(
@@ -271,8 +312,10 @@ for p in products:
     detail_content = detail_content.replace("{{product_name}}", p_name)
     detail_content = detail_content.replace("{{product_name_url}}", urllib.parse.quote(p_name))
     detail_content = detail_content.replace("{{category}}", category)
+    detail_content = detail_content.replace("{{category_slug}}", get_cat_slug(category))
     detail_content = detail_content.replace("{{description}}", desc_clean)
     detail_content = detail_content.replace("{{main_image}}", main_image)
+    detail_content = detail_content.replace("{{main_image_alt}}", main_image_alt)
     
     # Thumbnails hook
     if has_thumbs:
@@ -287,13 +330,82 @@ for p in products:
     detail_content = detail_content.replace("{{applications_html}}", apps_html)
     detail_content = detail_content.replace("{{related_products_html}}", related_products_html)
 
+    # Generate Product & BreadcrumbList Schemas
+    p_img_url = f"https://santoshpolymers.com{main_image}"
+    p_url = f"https://santoshpolymers.com/{dir_name}/"
+    cat_slug = get_cat_slug(category)
+    
+    prod_schema_dict = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": p_name,
+        "image": p_img_url,
+        "description": desc_clean,
+        "category": category,
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+                "@type": "Organization",
+                "name": "Santosh Polymers",
+                "url": "https://santoshpolymers.com"
+            }
+        },
+        "manufacturer": {
+            "@type": "Organization",
+            "name": "Santosh Polymers",
+            "url": "https://santoshpolymers.com",
+            "logo": "https://santoshpolymers.com/images/logo_3.webp"
+        }
+    }
+    
+    breadcrumb_schema_dict = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://santoshpolymers.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Products",
+                "item": "https://santoshpolymers.com/products"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": category,
+                "item": f"https://santoshpolymers.com/products#{cat_slug}"
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": p_name,
+                "item": p_url
+            }
+        ]
+    }
+    
+    pdp_schema_script = f"""  <script type="application/ld+json">
+  {json.dumps(prod_schema_dict, indent=2)}
+  </script>
+  <script type="application/ld+json">
+  {json.dumps(breadcrumb_schema_dict, indent=2)}
+  </script>"""
+
     # Wrap in master layout
     final_html = render_page(
         content=detail_content,
         title=p["title"],
         desc=p["meta_description"],
         keywords=p["meta_keywords"],
-        active_menu="products"
+        active_menu="products",
+        canonical_url=p_url,
+        schema_script=pdp_schema_script
     )
     
     # Save as directory/index.html for clean URLs (e.g. /oleic-fatty-acid/)
@@ -348,7 +460,7 @@ for p in products:
       <div class="featured-card">
         <div class="featured-image">
           <span class="featured-badge">{f_badge}</span>
-          <img src="{main_image}" alt="{p_name}" loading="lazy">
+          <img src="{main_image}" alt="{p_name} manufacturer India - Santosh Polymers" loading="lazy">
         </div>
         <div class="featured-info">
           <div>
@@ -372,7 +484,7 @@ for p in products:
         featured_products_no_labels_html += f'''
       <div class="featured-card">
         <div class="featured-image">
-          <img src="{main_image}" alt="{p_name}" loading="lazy">
+          <img src="{main_image}" alt="{p_name} manufacturer India - Santosh Polymers" loading="lazy">
         </div>
         <div class="featured-info">
           <div>
@@ -408,7 +520,7 @@ for p in products:
     products_grid_html += f'''
       <div class="product-card" data-segments="{segments_str}" data-form="{form_val}">
         <div class="product-image">
-          <img src="{main_image}" alt="{p_name}" loading="lazy">
+          <img src="{main_image}" alt="{p_name} supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -446,13 +558,38 @@ products_banner_html = render_banner(
 )
 products_content = products_content.replace("{{unified_banner_html}}", products_banner_html)
 
+# Breadcrumb schema for catalog page
+products_breadcrumbs_schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://santoshpolymers.com"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Products",
+            "item": "https://santoshpolymers.com/products"
+        }
+    ]
+}
+products_schema_script = f"""  <script type="application/ld+json">
+  {json.dumps(products_breadcrumbs_schema, indent=2)}
+  </script>"""
+
 # Wrap in master layout
 products_html = render_page(
     content=products_content,
     title="Products Catalog | Oleochemicals, Paper Sizing, Packaging Trays",
     desc="Browse our extensive range of high-quality oleochemicals, distilled fatty acids, paper chemicals, essential oils, and packaging products manufactured in Haryana, India.",
     keywords="oleic fatty acid, distilled palm fatty acid, akd wax emulsion, corrugated boxes, pulp egg trays, soya lecithin",
-    active_menu="products"
+    active_menu="products",
+    canonical_url="https://santoshpolymers.com/products/",
+    schema_script=products_schema_script
 )
 
 # Save to products/index.html
@@ -471,7 +608,8 @@ core_pages = [
         "title": "Santosh Polymers | Oleochemicals & Packaging Manufacturer India",
         "desc": "Leading manufacturer and supplier of Oleochemicals, Distilled Fatty Acids, Soya Lecithin, Paper Chemicals (AKD Emulsion, DSR), and eco-friendly Pulp Packaging Trays in Kurukshetra, Haryana.",
         "keywords": "oleic fatty acid, distilled palm fatty acid, liquid soya lecithin, corrugated boxes, pulp egg trays, haryana, india",
-        "menu": "home"
+        "menu": "home",
+        "canonical": "https://santoshpolymers.com/"
     },
     {
         "src": "about-us.html",
@@ -479,7 +617,8 @@ core_pages = [
         "title": "About Us | Santosh Polymers Kurukshetra Haryana",
         "desc": "Discover Santosh Polymers' history since 1997, our team leaders, state-of-the-art chemical manufacturing infrastructure, and our commitment to sustainable packaging and high-purity oleochemicals.",
         "keywords": "about company, founders, history, values, kurukshetra, haryana",
-        "menu": "about"
+        "menu": "about",
+        "canonical": "https://santoshpolymers.com/about-us/"
     },
     {
         "src": "industries-we-serve.html",
@@ -487,7 +626,8 @@ core_pages = [
         "title": "Industries We Serve | Santosh Polymers",
         "desc": "We supply specialty chemicals, distilled fatty acids, and eco-friendly packaging boxes to the Paint, Biodiesel fuel, Pharmaceutical, Petrochemical, and Plastic & Resin industries.",
         "keywords": "paint industry, biodiesel, pharmaceutical, petrochemical, resins, packaging",
-        "menu": "industries"
+        "menu": "industries",
+        "canonical": "https://santoshpolymers.com/industries/"
     },
     {
         "src": "contact-us.html",
@@ -495,20 +635,48 @@ core_pages = [
         "title": "Contact Us | Santosh Polymers Ladwa Kurukshetra",
         "desc": "Contact Mr. Ankur Goel or our technical sales team for sample requests, chemical formulation assistance, or commercial wholesale pricing on oleochemicals and pulp packaging.",
         "keywords": "contact address, phone, email, google map, office location, ladwa",
-        "menu": "contact"
+        "menu": "contact",
+        "canonical": "https://santoshpolymers.com/contact-us/"
     }
 ]
-
-import re
 
 for page in core_pages:
     src_path = os.path.join(base_dir, "src", page["src"])
     with open(src_path, 'r', encoding='utf-8') as f:
         src_content = f.read()
         
+    page_schema = ""
+    
     if page["src"] == "index.html":
         src_content = src_content.replace("{{featured_products_html}}", featured_products_no_labels_html)
-    elif page["src"] == "about-us.html":
+        # Homepage gets standard Organization schema
+        page_schema = default_org_schema
+    else:
+        # Other pages get BreadcrumbList schema
+        page_title_short = page["title"].split('|')[0].strip()
+        bc_schema = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://santoshpolymers.com"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": page_title_short,
+                    "item": page["canonical"]
+                }
+            ]
+        }
+        page_schema = f"""  <script type="application/ld+json">
+  {json.dumps(bc_schema, indent=2)}
+  </script>"""
+
+    if page["src"] == "about-us.html":
         pass  # About-us has its own static banner — no unified banner injection needed
     elif page["src"] == "industries-we-serve.html":
         banner_html = render_banner(
@@ -544,7 +712,9 @@ for page in core_pages:
         title=page["title"],
         desc=page["desc"],
         keywords=page["keywords"],
-        active_menu=page["menu"]
+        active_menu=page["menu"],
+        canonical_url=page["canonical"],
+        schema_script=page_schema
     )
     
     if page["dest"] == "":
@@ -556,5 +726,54 @@ for page in core_pages:
     with open(dest_path, 'w', encoding='utf-8') as f:
         f.write(final_html)
     print(f"Generated core page: {'/' if page['dest'] == '' else page['dest'] + '/'}")
+
+# ==========================================
+# 4. GENERATE SITEMAP (sitemap.xml)
+# ==========================================
+print("\nGenerating sitemap.xml...")
+sitemap_path = os.path.join(base_dir, "sitemap.xml")
+
+sitemap_urls = []
+# Homepage
+sitemap_urls.append({
+    "loc": "https://santoshpolymers.com/",
+    "changefreq": "daily",
+    "priority": "1.0"
+})
+
+# Core pages
+core_paths = ["products/", "about-us/", "industries/", "contact-us/"]
+for cp in core_paths:
+    sitemap_urls.append({
+        "loc": f"https://santoshpolymers.com/{cp}",
+        "changefreq": "weekly",
+        "priority": "0.8"
+    })
+    
+# Product detail pages
+for p in products:
+    filename = p["link"].split('/')[-1]
+    dir_name = filename.replace('.htm', '')
+    sitemap_urls.append({
+        "loc": f"https://santoshpolymers.com/{dir_name}/",
+        "changefreq": "weekly",
+        "priority": "0.9"
+    })
+    
+sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+
+for u in sitemap_urls:
+    sitemap_xml += '  <url>\n'
+    sitemap_xml += f'    <loc>{u["loc"]}</loc>\n'
+    sitemap_xml += f'    <changefreq>{u["changefreq"]}</changefreq>\n'
+    sitemap_xml += f'    <priority>{u["priority"]}</priority>\n'
+    sitemap_xml += '  </url>\n'
+    
+sitemap_xml += '</urlset>\n'
+
+with open(sitemap_path, 'w', encoding='utf-8') as f:
+    f.write(sitemap_xml)
+print("Generated sitemap.xml successfully!")
 
 print("\n--- ALL PAGES GENERATED SUCCESSFULLY ---")

@@ -8,7 +8,7 @@
       <!-- Gallery Column -->
       <div class="pdp-gallery-column reveal-left">
         <div class="pdp-gallery-main" id="pdpMainGallery" title="Click to zoom / view lightbox">
-          <img id="mainGalleryImg" src="{{main_image}}" alt="{{product_name}}">
+          <img id="mainGalleryImg" src="{{main_image}}" alt="{{main_image_alt}}">
           <div class="pdp-zoom-overlay">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
           </div>
@@ -130,6 +130,9 @@
         <!-- Tab 3: Applications -->
         <div class="pdp-tab-content" id="tab-apps">
           {{applications_html}}
+          <p style="margin-top: 20px; font-size: 14px; border-top: 1px solid var(--border-color); padding-top: 15px; color: var(--text-secondary);">
+            Learn more about how we support these sectors on our <a href="/industries" style="color: var(--primary-color); font-weight: 600; text-decoration: underline;">Industries We Serve</a> page.
+          </p>
         </div>
         
       </div>
@@ -221,7 +224,7 @@
     <div class="section-header-left reveal">
       <span class="section-subtitle">Suggestions</span>
       <h2 class="section-title">Related Products</h2>
-      <p style="margin-top: 4px; font-size: var(--text-sm); color: var(--text-secondary);">Other items in our {{category}} spectrum</p>
+      <p style="margin-top: 4px; font-size: var(--text-sm); color: var(--text-secondary);">Other items in our <a href="/products#{{category_slug}}" style="color: var(--primary-color); font-weight: 600; text-decoration: underline;">{{category}}</a> spectrum</p>
     </div>
     <div class="pdp-related-row reveal">
       {{related_products_html}}
