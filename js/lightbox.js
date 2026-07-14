@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+﻿document.addEventListener("DOMContentLoaded", function() {
   var mainGallery = document.getElementById("pdpMainGallery");
   var lightboxModal = document.getElementById("pdpLightboxModal");
   var lightboxImg = document.getElementById("pdpLightboxImg");

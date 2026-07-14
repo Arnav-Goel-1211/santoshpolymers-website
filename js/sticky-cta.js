@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+﻿document.addEventListener('DOMContentLoaded', function () {
   var toggle = document.getElementById('stickyCtaToggle');
   var body = document.getElementById('stickyCtaBody');
   if (toggle && body) {

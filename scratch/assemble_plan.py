@@ -1,4 +1,4 @@
-import os
+﻿import os
 
 base_dir = r"c:\Users\arnav\Documents\GitHub\santoshpolymers-website"
 audit_results_path = r"C:\Users\arnav\.gemini\antigravity-ide\brain\2cb7dd9f-c3c2-45ce-88b4-6c32d6822e9d\audit_results.md"
@@ -18,7 +18,7 @@ This plan outlines the technical and on-page SEO changes for **santoshpolymers.c
 
 > [!IMPORTANT]
 > - **Product SEO Meta Fields**: The titles and descriptions in the audit table below will be loaded directly into `products_full.json` so that the python generator propagates them to all product pages.
-> - **Email Updates (Except Resend)**: We will replace `santoshpolymers.info@gmail.com` with `info@santoshpolymersz.com` and `ankur.goel@santoshpolymers.com` in all layout templates, contact pages, and sticky CTAs. In the backend processors (`send_email.php` and `api/send-email.js`), the `to` field (recipient) will be updated to these new address listings, while keeping the `from` field as `onboarding@resend.dev` (the resend sender configuration).
+> - **Email Updates (Except Resend)**: We will replace `santoshpolymers.info@gmail.com` with `info@santoshpolymers.com` and `ankur.goel@santoshpolymers.com` in all layout templates, contact pages, and sticky CTAs. In the backend processors (`send_email.php` and `api/send-email.js`), the `to` field (recipient) will be updated to these new address listings, while keeping the `from` field as `onboarding@resend.dev` (the resend sender configuration).
 > - **Zero Layout/Visual Impact**: Visuals, banners, layout alignments, and stats counters remain entirely unchanged.
 
 ## Proposed Changes
@@ -34,8 +34,8 @@ This plan outlines the technical and on-page SEO changes for **santoshpolymers.c
 - Add a `<link rel="canonical" href="{{{{canonical_url}}}}">` tag in the `<head>`.
 - Add a homepage-specific Organization schema.
 - Update contact points in the layout:
-  - Header: Link email to `mailto:info@santoshpolymersz.com` (and show `info@santoshpolymersz.com`).
-  - Mobile Menu: List both `info@santoshpolymersz.com` and `ankur.goel@santoshpolymers.com`.
+  - Header: Link email to `mailto:info@santoshpolymers.com` (and show `info@santoshpolymers.com`).
+  - Mobile Menu: List both `info@santoshpolymers.com` and `ankur.goel@santoshpolymers.com`.
   - Footer Location & Links: List both email links.
 
 #### [MODIFY] [templates/product_detail.html](file:///{base_dir.replace('\\', '/')}/templates/product_detail.html)
@@ -54,10 +54,10 @@ This plan outlines the technical and on-page SEO changes for **santoshpolymers.c
 ### 2. Core Pages & Sticky CTAs
 
 #### [MODIFY] [src/contact-us.html](file:///{base_dir.replace('\\', '/')}/src/contact-us.html)
-- Update displayed emails in the contact-info cards to display the new email links (`info@santoshpolymersz.com` and `ankur.goel@santoshpolymers.com`).
+- Update displayed emails in the contact-info cards to display the new email links (`info@santoshpolymers.com` and `ankur.goel@santoshpolymers.com`).
 
 #### [MODIFY] [src/industries-we-serve.html](file:///{base_dir.replace('\\', '/')}/src/industries-we-serve.html)
-- Update the sticky CTA email mailto link to target the new emails: `mailto:info@santoshpolymersz.com,ankur.goel@santoshpolymers.com`.
+- Update the sticky CTA email mailto link to target the new emails: `mailto:info@santoshpolymers.com,ankur.goel@santoshpolymers.com`.
 
 ---
 
@@ -66,14 +66,14 @@ This plan outlines the technical and on-page SEO changes for **santoshpolymers.c
 #### [MODIFY] [api/send-email.js](file:///{base_dir.replace('\\', '/')}/api/send-email.js)
 - Update the recipient `to` field:
   ```javascript
-  to: ["info@santoshpolymersz.com", "ankur.goel@santoshpolymers.com"],
+  to: ["info@santoshpolymers.com", "ankur.goel@santoshpolymers.com"],
   ```
 - Keep the `from` field as `"onboarding@resend.dev"` as required by Resend constraints.
 
 #### [MODIFY] [send_email.php](file:///{base_dir.replace('\\', '/')}/send_email.php)
 - Update the recipient `to` field:
   ```php
-  "to" => "info@santoshpolymersz.com, ankur.goel@santoshpolymers.com",
+  "to" => "info@santoshpolymers.com, ankur.goel@santoshpolymers.com",
   ```
 - Keep the `from` field as `"onboarding@resend.dev"`.
 

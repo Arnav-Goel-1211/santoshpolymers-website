@@ -1,4 +1,4 @@
-import os
+﻿import os
 import json
 import urllib.parse
 import re
@@ -78,7 +78,7 @@ default_org_schema = """  <script type="application/ld+json">
       "@type": "ContactPoint",
       "telephone": "+91-9215660695",
       "contactType": "sales",
-      "email": "info@santoshpolymersz.com",
+      "email": "info@santoshpolymers.com",
       "availableLanguage": ["en", "hi"]
     },
     "address": {
@@ -677,7 +677,7 @@ for page in core_pages:
   </script>"""
 
     if page["src"] == "about-us.html":
-        pass  # About-us has its own static banner — no unified banner injection needed
+        pass  # About-us has its own static banner â€” no unified banner injection needed
     elif page["src"] == "industries-we-serve.html":
         banner_html = render_banner(
             eyebrow="Key Verticals",

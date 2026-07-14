@@ -1,4 +1,4 @@
-import json
+﻿import json
 import os
 
 base_dir = r"c:\Users\arnav\Documents\GitHub\santoshpolymers-website"

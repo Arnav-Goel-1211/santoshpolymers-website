@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+﻿document.addEventListener("DOMContentLoaded", function() {
   var segmentBtns = document.querySelectorAll(".pill-btn");
   var formBtns = document.querySelectorAll(".form-pill");
   var searchInput = document.getElementById("catalogSearch");

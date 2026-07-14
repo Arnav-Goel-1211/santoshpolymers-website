@@ -1,4 +1,4 @@
-window.dataLayer = window.dataLayer || [];
+﻿window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 var consentState = localStorage.getItem('cookie-consent') === 'granted' ? 'granted' : 'denied';
 gtag('consent', 'default', {
