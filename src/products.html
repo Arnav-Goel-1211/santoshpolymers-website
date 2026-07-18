@@ -1,4 +1,4 @@
-﻿{{unified_banner_html}}
+{{unified_banner_html}}
 
 <!-- Featured Products Showcase -->
 <section class="featured-section">
@@ -21,15 +21,13 @@
     <!-- Consolidated Filters Control Panel -->
     <div class="filters-panel-wrapper reveal">
       
-      <!-- Market Segment Scrollable Pills -->
+      <!-- Product Category Scrollable Pills -->
       <div class="segment-pills-container">
         <div class="segment-pills-row">
-          <button class="pill-btn active" data-segment="all">All Products</button>
-          <button class="pill-btn" data-segment="personal-care">Personal Care & Cosmetics</button>
-          <button class="pill-btn" data-segment="paints-coatings">Paints Coatings & Inks</button>
-          <button class="pill-btn" data-segment="paper-pulp">Paper & Pulp</button>
-          <button class="pill-btn" data-segment="agri-food">Agri & Food</button>
-          <button class="pill-btn" data-segment="rubber-plastics">Rubber & Plastics</button>
+          <button class="pill-btn active" data-category="all">All Products</button>
+          <button class="pill-btn" data-category="oleo-chemicals">Oleo Chemicals</button>
+          <button class="pill-btn" data-category="herbal-extracts">Herbal Extracts</button>
+          <button class="pill-btn" data-category="packaging-solutions">Packaging Solutions</button>
         </div>
       </div>
       
@@ -55,6 +53,17 @@
     
     <!-- Secondary Expandable Filters Panel -->
     <div class="secondary-expandable-panel" id="secondaryFiltersPanel">
+      <div class="form-filter-container" style="margin-bottom: 16px;">
+        <span class="filter-label">Market Segment:</span>
+        <div class="form-pills-row">
+          <button class="form-pill active" data-segment="all">Any Segment</button>
+          <button class="form-pill" data-segment="personal-care">Personal Care</button>
+          <button class="form-pill" data-segment="paints-coatings">Paints &amp; Coatings</button>
+          <button class="form-pill" data-segment="paper-pulp">Paper &amp; Pulp</button>
+          <button class="form-pill" data-segment="agri-food">Agri &amp; Food</button>
+          <button class="form-pill" data-segment="rubber-plastics">Rubber &amp; Plastics</button>
+        </div>
+      </div>
       <div class="form-filter-container">
         <span class="filter-label">Physical Form:</span>
         <div class="form-pills-row">
@@ -86,8 +95,9 @@
 <!-- Filter Script -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const segmentBtns = document.querySelectorAll(".pill-btn");
-  const formBtns = document.querySelectorAll(".form-pill");
+  const categoryBtns = document.querySelectorAll(".pill-btn");
+  const segmentBtns = document.querySelectorAll("#secondaryFiltersPanel button[data-segment]");
+  const formBtns = document.querySelectorAll("#secondaryFiltersPanel button[data-form]");
   const searchInput = document.getElementById("catalogSearch");
   const clearSearchBtn = document.getElementById("clearSearch");
   const moreFiltersToggle = document.getElementById("moreFiltersToggle");
@@ -98,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const resetFiltersButton = document.getElementById("resetFiltersButton");
   const resetAllFiltersBtn = document.getElementById("resetAllFiltersBtn");
 
+  let activeCategory = "all";
   let activeSegment = "all";
   let activeForm = "all";
   let searchQuery = "";
@@ -121,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
       let visibleCount = 0;
       
       productCards.forEach(card => {
+        const productCategory = card.getAttribute("data-category") || "";
         const segmentsAttr = card.getAttribute("data-segments") || "";
         const productSegments = segmentsAttr.split(",").map(s => s.trim());
         const productForm = card.getAttribute("data-form") || "N/A";
@@ -129,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const subTypeTag = card.querySelector(".tag-subtype")?.textContent.toLowerCase() || "";
 
         // Checks
+        const matchesCategory = activeCategory === "all" || productCategory === activeCategory;
         const matchesSegment = activeSegment === "all" || productSegments.includes(activeSegment);
         const matchesForm = activeForm === "all" || productForm.toLowerCase() === activeForm.toLowerCase();
         
@@ -138,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function() {
                               productDesc.includes(q) ||
                               subTypeTag.includes(q);
 
-        if (matchesSegment && matchesForm && matchesSearch) {
+        if (matchesCategory && matchesSegment && matchesForm && matchesSearch) {
           card.style.display = "flex";
           // Add slight delay for reflow reveal
           setTimeout(() => { card.style.opacity = "1"; card.style.transform = "translateY(0)"; }, 20);
@@ -160,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       // Show/hide main clear button
-      const hasActiveFilters = activeSegment !== "all" || activeForm !== "all" || searchQuery !== "";
+      const hasActiveFilters = activeCategory !== "all" || activeSegment !== "all" || activeForm !== "all" || searchQuery !== "";
       if (resetAllFiltersBtn) {
         resetAllFiltersBtn.style.display = hasActiveFilters ? "inline-flex" : "none";
       }
@@ -170,7 +183,17 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 200);
   }
 
-  // 3. Segment Pill Click Handler
+  // 3. Category Pill Click Handler
+  categoryBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+      categoryBtns.forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+      activeCategory = this.getAttribute("data-category");
+      applyFilters();
+    });
+  });
+
+  // 4. Segment Pill Click Handler
   segmentBtns.forEach(btn => {
     btn.addEventListener("click", function() {
       segmentBtns.forEach(b => b.classList.remove("active"));
@@ -180,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // 4. Form Pill Click Handler
+  // 5. Form Pill Click Handler
   formBtns.forEach(btn => {
     btn.addEventListener("click", function() {
       formBtns.forEach(b => b.classList.remove("active"));
@@ -190,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // 5. Search Input Handler
+  // 6. Search Input Handler
   if (searchInput) {
     searchInput.addEventListener("input", function() {
       searchQuery = this.value;
@@ -201,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // 6. Clear Search Button
+  // 7. Clear Search Button
   if (clearSearchBtn) {
     clearSearchBtn.addEventListener("click", function() {
       searchInput.value = "";
@@ -212,11 +235,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // 7. Reset Filters Button
+  // 8. Reset Filters Button
   function resetAll() {
+    activeCategory = "all";
     activeSegment = "all";
     activeForm = "all";
     searchQuery = "";
+    
+    categoryBtns.forEach(b => b.classList.remove("active"));
+    categoryBtns[0].classList.add("active");
     
     segmentBtns.forEach(b => b.classList.remove("active"));
     segmentBtns[0].classList.add("active");
@@ -235,16 +262,20 @@ document.addEventListener("DOMContentLoaded", function() {
   if (resetFiltersButton) resetFiltersButton.addEventListener("click", resetAll);
   if (resetAllFiltersBtn) resetAllFiltersBtn.addEventListener("click", resetAll);
 
-  // 8. URL Hash Handler (Routing to specific segment, e.g., /products#paper-pulp)
+  // 9. URL Hash Handler (Routing to specific category, e.g., /products#oleo-chemicals)
   function handleUrlHash() {
     const hash = window.location.hash;
     if (hash) {
-      const targetSegment = hash.substring(1);
-      const targetBtn = document.querySelector(`.pill-btn[data-segment="${targetSegment}"]`);
+      let targetCategory = hash.substring(1);
+      if (targetCategory === "paper-chemicals") {
+        targetCategory = "packaging-solutions";
+        window.location.hash = "#packaging-solutions";
+      }
+      const targetBtn = document.querySelector(`.pill-btn[data-category="${targetCategory}"]`);
       if (targetBtn) {
-        segmentBtns.forEach(b => b.classList.remove("active"));
+        categoryBtns.forEach(b => b.classList.remove("active"));
         targetBtn.classList.add("active");
-        activeSegment = targetSegment;
+        activeCategory = targetCategory;
         
         // Scroll target pill into view
         targetBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });

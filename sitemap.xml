@@ -26,7 +26,22 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://santoshpolymers.com/distilled-soya-fatty-acid-oil/</loc>
+    <loc>https://santoshpolymers.com/oleic-acid/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://santoshpolymers.com/distilled-soya-fatty-acid/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://santoshpolymers.com/soya-fatty-acid-eco/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://santoshpolymers.com/monobasic-fatty-acid/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -36,27 +51,22 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://santoshpolymers.com/soya-acid-oil/</loc>
+    <loc>https://santoshpolymers.com/distilled-palm-fatty-acid/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://santoshpolymers.com/oleic-fatty-acid/</loc>
+    <loc>https://santoshpolymers.com/ricinoleic-acid/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://santoshpolymers.com/castor-oil-fatty-acid/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://santoshpolymers.com/poultry-feed-oil/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://santoshpolymers.com/food-additive-sorbitan-monooleate/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://santoshpolymers.com/peg-400-monooleate/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -71,22 +81,12 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://santoshpolymers.com/bypass-fat-84/</loc>
+    <loc>https://santoshpolymers.com/sorbitan-monooleate/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://santoshpolymers.com/calcium-stearate-chemical/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://santoshpolymers.com/castor-oil-fatty-acid/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://santoshpolymers.com/distilled-palm-fatty-acid/</loc>
+    <loc>https://santoshpolymers.com/peg-400-monooleate/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -111,16 +111,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://santoshpolymers.com/tall-oil-fatty-acid/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://santoshpolymers.com/terpineol-essential-oil/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://santoshpolymers.com/zinc-ricinoleate/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -131,27 +121,32 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://santoshpolymers.com/bypass-fat-84/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://santoshpolymers.com/calcium-stearate/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://santoshpolymers.com/tall-oil-fatty-acid/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://santoshpolymers.com/terpineol-essential-oil/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://santoshpolymers.com/gum-rosin/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://santoshpolymers.com/pine-oil-industrial/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://santoshpolymers.com/ricinoleic-acid/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://santoshpolymers.com/monobasic-fatty-acid/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://santoshpolymers.com/soya-fatty-acid-eco/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

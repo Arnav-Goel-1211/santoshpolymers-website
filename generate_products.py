@@ -1,4 +1,4 @@
-﻿import os
+import os
 import json
 import urllib.parse
 import re
@@ -9,20 +9,20 @@ layout_path = os.path.join(base_dir, "templates", "layout.html")
 prod_detail_template_path = os.path.join(base_dir, "templates", "product_detail.html")
 
 # Read database
-with open(products_json_path, 'r', encoding='utf-8') as f:
+with open(products_json_path, 'r', encoding='utf-8-sig') as f:
     products = json.load(f)
 
 # Read layout
-with open(layout_path, 'r', encoding='utf-8') as f:
+with open(layout_path, 'r', encoding='utf-8-sig') as f:
     layout_tpl = f.read()
 
 # Read product detail template
-with open(prod_detail_template_path, 'r', encoding='utf-8') as f:
+with open(prod_detail_template_path, 'r', encoding='utf-8-sig') as f:
     prod_detail_tpl = f.read()
 
 # Read inner banner template
 inner_banner_path = os.path.join(base_dir, "templates", "inner_banner.html")
-with open(inner_banner_path, 'r', encoding='utf-8') as f:
+with open(inner_banner_path, 'r', encoding='utf-8-sig') as f:
     inner_banner_tpl = f.read()
 
 def render_banner(eyebrow, title, description, breadcrumbs, bg_image, stats_html=""):
@@ -511,6 +511,7 @@ for p in products:
     segments_str = ",".join(segments)
     sub_type = p.get("sub_type", "Specialty")
     form_val = p.get("physical_form", "N/A")
+    cat_slug = get_cat_slug(p["category"])
     
     img_list = p["images"]
     main_image = img_list[0] if img_list else "images/product/default.webp"
@@ -518,16 +519,12 @@ for p in products:
     segments_html = make_segment_badges(segments)
     
     products_grid_html += f'''
-      <div class="product-card" data-segments="{segments_str}" data-form="{form_val}">
+      <div class="product-card" data-category="{cat_slug}" data-segments="{segments_str}" data-form="{form_val}">
         <div class="product-image">
           <img src="{main_image}" alt="{p_name} supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
-            <div class="product-tags">
-              {segments_html}
-              <span class="tag-subtype">{sub_type}</span>
-            </div>
             <h3 class="product-title"><a href="{clean_url}" class="card-link-stretched">{p_name}</a></h3>
             <p class="product-desc">{clean_weblink_boilerplate(p["description"], p_name)}</p>
           </div>
@@ -541,7 +538,7 @@ for p in products:
 
 # Read products source page
 src_products_path = os.path.join(base_dir, "src", "products.html")
-with open(src_products_path, 'r', encoding='utf-8') as f:
+with open(src_products_path, 'r', encoding='utf-8-sig') as f:
     src_products_content = f.read()
 
 # Replace placeholders
@@ -584,9 +581,9 @@ products_schema_script = f"""  <script type="application/ld+json">
 # Wrap in master layout
 products_html = render_page(
     content=products_content,
-    title="Products Catalog | Oleochemicals, Paper Sizing, Packaging Trays",
-    desc="Browse our extensive range of high-quality oleochemicals, distilled fatty acids, paper chemicals, essential oils, and packaging products manufactured in Haryana, India.",
-    keywords="oleic fatty acid, distilled palm fatty acid, akd wax emulsion, corrugated boxes, pulp egg trays, soya lecithin",
+    title="Pulp Moulded Trays Manufacturers and Suppliers from Kurukshetra India | Santosh Polymers",
+    desc="Santosh Polymers are the leading Manufacturer & Supplier of Pulp Moulded Trays in Kurukshetra, Wholesale Corrugated Packaging Boxes, Pulp Moulded Trays trader in Haryana India.",
+    keywords="pulp moulded trays manufacturer in kurukshetra, corrugated packaging boxes producer, pulp moulded trays manufacturer in haryana, wholesale corrugated packaging boxes supplier india, pulp moulded trays manufacturing company haryana india",
     active_menu="products",
     canonical_url="https://santoshpolymers.com/products/",
     schema_script=products_schema_script
@@ -605,36 +602,36 @@ core_pages = [
     {
         "src": "index.html",
         "dest": "",
-        "title": "Santosh Polymers | Oleochemicals & Packaging Manufacturer India",
-        "desc": "Leading manufacturer and supplier of Oleochemicals, Distilled Fatty Acids, Soya Lecithin, Paper Chemicals (AKD Emulsion, DSR), and eco-friendly Pulp Packaging Trays in Kurukshetra, Haryana.",
-        "keywords": "oleic fatty acid, distilled palm fatty acid, liquid soya lecithin, corrugated boxes, pulp egg trays, haryana, india",
+        "title": "Santosh Polymers - Liquid Soya Lecithin Manufacturer Supplier from Kurukshetra",
+        "desc": "Santosh Polymers are the leading Manufacturer and Supplier of Liquid Soya Lecithin in Kurukshetra, Wholesale Corrugated Packaging Boxes, Liquid Soya Lecithin trader in Haryana.",
+        "keywords": "liquid soya lecithin manufacturer in kurukshetra, corrugated packaging boxes producer, liquid soya lecithin manufacturer in haryana, wholesale corrugated packaging boxes supplier india, liquid soya lecithin manufacturing company haryana india",
         "menu": "home",
         "canonical": "https://santoshpolymers.com/"
     },
     {
         "src": "about-us.html",
         "dest": "about-us",
-        "title": "About Us | Santosh Polymers Kurukshetra Haryana",
-        "desc": "Discover Santosh Polymers' history since 1997, our team leaders, state-of-the-art chemical manufacturing infrastructure, and our commitment to sustainable packaging and high-purity oleochemicals.",
-        "keywords": "about company, founders, history, values, kurukshetra, haryana",
+        "title": "Santosh Polymers Kurukshetra, India | About Us",
+        "desc": "Santosh Polymers, Kurukshetra, Haryana, India - Manufacturer & supplier of  manufacturer Kurukshetra, wholesale Poultry Feed Oil supplier,  manufacturer in Kurukshetra, India.",
+        "keywords": "santosh polymers in kurukshetra,  manufacturer kurukshetra, poultry feed oil manufacturer india,  manufacturer, wholesale pulp moulded trays supplier,  supplier kurukshetra",
         "menu": "about",
         "canonical": "https://santoshpolymers.com/about-us/"
     },
     {
         "src": "industries-we-serve.html",
         "dest": "industries",
-        "title": "Industries We Serve | Santosh Polymers",
-        "desc": "We supply specialty chemicals, distilled fatty acids, and eco-friendly packaging boxes to the Paint, Biodiesel fuel, Pharmaceutical, Petrochemical, and Plastic & Resin industries.",
-        "keywords": "paint industry, biodiesel, pharmaceutical, petrochemical, resins, packaging",
+        "title": "Industries We Serve - Santosh Polymers from Kurukshetra Haryana India",
+        "desc": "Industries We Serve - Santosh Polymers are one of the leading Manufacturer & Supplier in Kurukshetra Haryana India.",
+        "keywords": "industries we serve santosh polymers, santosh polymers in kurukshetra, santosh polymers manufacturer & supplier, santosh polymers in haryana, industries we serve santosh polymers in india",
         "menu": "industries",
         "canonical": "https://santoshpolymers.com/industries/"
     },
     {
         "src": "contact-us.html",
         "dest": "contact-us",
-        "title": "Contact Us | Santosh Polymers Ladwa Kurukshetra",
-        "desc": "Contact Mr. Ankur Goel or our technical sales team for sample requests, chemical formulation assistance, or commercial wholesale pricing on oleochemicals and pulp packaging.",
-        "keywords": "contact address, phone, email, google map, office location, ladwa",
+        "title": "Contact to Santosh Polymers Kurukshetra India - Manufacturers and Suppliers",
+        "desc": "Contact to best Distilled Palm Fatty Acid Manufacturing & Supplying Company in Kurukshetra - Wholesaler of Akd Wax Emulsion in Kurukshetra Manufacturing Company in India.",
+        "keywords": "contact distilled palm fatty acid manufacturer in kurukshetra, contact to manufacturer of akd wax emulsion in kurukshetra, distilled rice fatty acid manufacturer, distilled palm fatty acid manufacturer in haryana, akd wax emulsion manufacturing company in india",
         "menu": "contact",
         "canonical": "https://santoshpolymers.com/contact-us/"
     }
@@ -642,7 +639,7 @@ core_pages = [
 
 for page in core_pages:
     src_path = os.path.join(base_dir, "src", page["src"])
-    with open(src_path, 'r', encoding='utf-8') as f:
+    with open(src_path, 'r', encoding='utf-8-sig') as f:
         src_content = f.read()
         
     page_schema = ""

@@ -3610,7 +3610,7 @@ footer p {
 }
 
 .secondary-expandable-panel.open {
-  max-height: 120px;
+  max-height: 250px;
   opacity: 1;
   padding: 20px;
   border-bottom: 1px solid var(--border-color);

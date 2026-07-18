@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
-
+.updated-products_sheet.csv
+.products_sheet.csv
 # Environment variables
 .env
 .env.local
