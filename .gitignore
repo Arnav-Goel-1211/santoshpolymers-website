@@ -1,7 +1,9 @@
 # Dependencies
 node_modules/
-.updated-products_sheet.csv
-.products_sheet.csv
+updated-products_sheet.csv
+products_sheet.csv
+.products_sheet.numbers
+.Untitled5.numbers
 # Environment variables
 .env
 .env.local
@@ -24,3 +26,5 @@ Thumbs.db
 # Python cache
 __pycache__/
 *.pyc
+products_sheet.numbers
+Untitled5.numbers

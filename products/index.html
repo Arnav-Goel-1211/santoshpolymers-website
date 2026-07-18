@@ -74,7 +74,6 @@
           <a href="/products">Products</a>
           <ul class="dropdown-menu">
             <li><a href="/products#oleo-chemicals">Oleo Chemicals</a></li>
-            <li><a href="/products#paper-chemicals">Paper Chemicals</a></li>
             <li><a href="/products#herbal-extracts">Herbal Extracts</a></li>
             <li><a href="/products#packaging-solutions">Packaging Solutions</a></li>
           </ul>
@@ -121,7 +120,6 @@
         </span>
         <div class="sub-links">
           <a href="/products#oleo-chemicals">Oleo Chemicals</a>
-          <a href="/products#paper-chemicals">Paper Chemicals</a>
           <a href="/products#herbal-extracts">Herbal Extracts</a>
           <a href="/products#packaging-solutions">Packaging Solutions</a>
         </div>
@@ -247,7 +245,6 @@
         <div class="segment-pills-row">
           <button class="pill-btn active" data-category="all">All Products</button>
           <button class="pill-btn" data-category="oleo-chemicals">Oleo Chemicals</button>
-          <button class="pill-btn" data-category="paper-chemicals">Paper Chemicals</button>
           <button class="pill-btn" data-category="herbal-extracts">Herbal Extracts</button>
           <button class="pill-btn" data-category="packaging-solutions">Packaging Solutions</button>
         </div>
@@ -703,7 +700,7 @@
     
       <div class="product-card" data-category="herbal-extracts" data-segments="personal-care,agri-food" data-form="Liquid">
         <div class="product-image">
-          <img src="images/product/turmeric-essential-oil_0.jpeg" alt="Turmeric Essential Oil supplier in India - Santosh Polymers" loading="lazy">
+          <img src="images/product/turmeric-essential-oil_0.webp" alt="Turmeric Essential Oil supplier in India - Santosh Polymers" loading="lazy">
         </div>
         <div class="product-info">
           <div>
@@ -749,7 +746,7 @@
         </div>
       </div>
     
-      <div class="product-card" data-category="paper-chemicals" data-segments="paper-pulp" data-form="Liquid">
+      <div class="product-card" data-category="packaging-solutions" data-segments="paper-pulp" data-form="Liquid">
         <div class="product-image">
           <img src="images/product/akd-wax-emulsion_0.jpeg" alt="Akd Wax Emulsion supplier in India - Santosh Polymers" loading="lazy">
         </div>
@@ -765,7 +762,7 @@
         </div>
       </div>
     
-      <div class="product-card" data-category="paper-chemicals" data-segments="paper-pulp,paints-coatings" data-form="Liquid">
+      <div class="product-card" data-category="packaging-solutions" data-segments="paper-pulp,paints-coatings" data-form="Liquid">
         <div class="product-image">
           <img src="images/product/defoamer_0.jpeg" alt="Defoamer supplier in India - Santosh Polymers" loading="lazy">
         </div>
@@ -781,7 +778,7 @@
         </div>
       </div>
     
-      <div class="product-card" data-category="paper-chemicals" data-segments="paper-pulp" data-form="Liquid">
+      <div class="product-card" data-category="packaging-solutions" data-segments="paper-pulp" data-form="Liquid">
         <div class="product-image">
           <img src="images/product/dsr-dry-strength-resin_0.jpeg" alt="DSR Dry Strength Resin supplier in India - Santosh Polymers" loading="lazy">
         </div>
@@ -797,7 +794,7 @@
         </div>
       </div>
     
-      <div class="product-card" data-category="paper-chemicals" data-segments="paper-pulp,paints-coatings" data-form="Liquid">
+      <div class="product-card" data-category="packaging-solutions" data-segments="paper-pulp,paints-coatings" data-form="Liquid">
         <div class="product-image">
           <img src="images/product/violet-ink_0.jpeg" alt="Violet Ink supplier in India - Santosh Polymers" loading="lazy">
         </div>
@@ -1032,7 +1029,11 @@ document.addEventListener("DOMContentLoaded", function() {
   function handleUrlHash() {
     const hash = window.location.hash;
     if (hash) {
-      const targetCategory = hash.substring(1);
+      let targetCategory = hash.substring(1);
+      if (targetCategory === "paper-chemicals") {
+        targetCategory = "packaging-solutions";
+        window.location.hash = "#packaging-solutions";
+      }
       const targetBtn = document.querySelector(`.pill-btn[data-category="${targetCategory}"]`);
       if (targetBtn) {
         categoryBtns.forEach(b => b.classList.remove("active"));
