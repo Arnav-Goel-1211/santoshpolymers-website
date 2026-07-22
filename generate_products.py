@@ -445,7 +445,7 @@ for p in products:
         dir_name = filename.replace('.htm', '')
         clean_url = f"/{dir_name}"
         img_list = p["images"]
-        main_image = img_list[0] if img_list else "images/product/default.webp"
+        main_image = "/" + img_list[0] if img_list else "/images/product/default.webp"
         
         segments_html = make_segment_badges(p.get("market_segments", []))
         sub_type = p.get("sub_type", "Specialty")
@@ -514,7 +514,7 @@ for p in products:
     cat_slug = get_cat_slug(p["category"])
     
     img_list = p["images"]
-    main_image = img_list[0] if img_list else "images/product/default.webp"
+    main_image = "/" + img_list[0] if img_list else "/images/product/default.webp"
     
     segments_html = make_segment_badges(segments)
     
